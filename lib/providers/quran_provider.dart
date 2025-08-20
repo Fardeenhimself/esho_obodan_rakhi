@@ -10,10 +10,10 @@ final quranProvider = FutureProvider<List<Surah>>((ref) async {
   return api.fetchQuran();
 });
 
-final surahAyahsProvider = FutureProvider.family<List<Ayahs>, int>((
-  ref,
-  surahNumber,
-) async {
-  final api = ref.watch(apiServiceProvider);
-  return api.fetchSurahAyahs(surahNumber);
-});
+// final surahAyahsProvider = FutureProvider.family<List<Ayahs>, int>((
+//   ref,
+//   surahNumber,
+// ) async {
+//   final api = ref.watch(apiServiceProvider);
+//   return api.fetchSurahAyahs(surahNumber);
+// });

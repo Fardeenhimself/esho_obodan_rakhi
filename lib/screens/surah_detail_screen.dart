@@ -10,19 +10,48 @@ class SurahDetailsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ayahsAsync = ref.watch(surahAyahsProvider(surah.number));
+    final ayahsAsync = ref.watch(quranProvider);
 
     return Scaffold(
       appBar: AppBar(title: Text(surah.englishName)),
       body: ayahsAsync.when(
         data: (ayahs) {
           return ListView.builder(
-            itemCount: ayahs.length,
+            itemCount: surah.ayahs.length,
             itemBuilder: (context, index) {
-              final ayah = ayahs[index];
-              return ListTile(
-                leading: CircleAvatar(child: Text("${ayah.numberInSurah}")),
-                title: Text(ayah.text, textAlign: TextAlign.justify),
+              final ayah = surah.ayahs[index];
+              return Card(
+                margin: const EdgeInsets.all(8),
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text('${ayah.numberInSurah}.'),
+                      Text(
+                        ayah.arabicText,
+                        style: const TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Amiri",
+                        ),
+                        textAlign: TextAlign.right,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        ayah.banglaText,
+                        style: const TextStyle(fontSize: 18),
+                        textAlign: TextAlign.left,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        "Page: ${ayah.page}",
+                        style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                        textAlign: TextAlign.right,
+                      ),
+                    ],
+                  ),
+                ),
               );
             },
           );
