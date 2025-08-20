@@ -1,11 +1,11 @@
-class Sura {
+class Surah {
   final int number;
   final String name;
   final String englishName;
   final String englishNameTranslation;
   final String revelationType;
 
-  Sura({
+  Surah({
     required this.number,
     required this.name,
     required this.englishName,
@@ -14,8 +14,8 @@ class Sura {
   });
 
   // Deserialization
-  factory Sura.fromJson(Map<String, dynamic> json) {
-    return Sura(
+  factory Surah.fromJson(Map<String, dynamic> json) {
+    return Surah(
       number: json['number'],
       name: json['name'],
       englishName: json['englishName'],
