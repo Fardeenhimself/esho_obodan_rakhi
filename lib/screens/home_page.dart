@@ -3,6 +3,7 @@ import 'package:islamic_app/components/my_card.dart';
 import 'package:islamic_app/components/my_categories.dart';
 import 'package:islamic_app/components/my_drawer.dart';
 import 'package:islamic_app/models/category.dart';
+import 'package:islamic_app/screens/category_details_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -45,9 +46,14 @@ class HomePage extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               itemCount: categories.length,
               itemBuilder: (context, index) {
+                final category = categories[index];
                 return InkWell(
                   borderRadius: BorderRadius.circular(100),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(
+                      context,
+                    ).push(MaterialPageRoute(builder: category.page));
+                  },
                   child: MyCategories(categoryItems: categories[index]),
                 );
               },
