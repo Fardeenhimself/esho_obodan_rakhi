@@ -10,14 +10,22 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('এসো অবদান রাখি')),
+      appBar: AppBar(
+        title: Text('এসো অবদান রাখি'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications, size: 30),
+          ),
+        ],
+      ),
       drawer: MyDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [
             // A card that will show at the home header
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 30),
               child: MyCard(
                 message: 'Even a smile is considered as charity',
                 msgInfo: 'Al-Hadith',
