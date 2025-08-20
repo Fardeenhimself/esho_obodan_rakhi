@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic_app/screens/settings_screen.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -55,6 +56,9 @@ class MyDrawer extends StatelessWidget {
                 ),
                 onTap: () {
                   Navigator.of(context).pop();
+                  Navigator.of(
+                    context,
+                  ).push(MaterialPageRoute(builder: (ctx) => SettingsScreen()));
                 },
               ),
             ],

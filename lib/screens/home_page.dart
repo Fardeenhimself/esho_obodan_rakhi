@@ -4,6 +4,7 @@ import 'package:islamic_app/components/my_categories.dart';
 import 'package:islamic_app/components/my_drawer.dart';
 import 'package:islamic_app/models/category.dart';
 import 'package:islamic_app/screens/category_details_screen.dart';
+import 'package:islamic_app/screens/notifications_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -15,7 +16,11 @@ class HomePage extends StatelessWidget {
         title: Text('এসো অবদান রাখি'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (ctx) => NotificationsScreen()),
+              );
+            },
             icon: Icon(Icons.notifications, size: 30),
           ),
         ],
