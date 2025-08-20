@@ -20,23 +20,33 @@ class AlQuranScreen extends ConsumerWidget {
             itemBuilder: (context, index) {
               final Surah surah = surahs[index];
               return Card(
-                margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                child: ListTile(
-                  title: Text("${surah.number}. ${surah.englishName}"),
-                  subtitle: Text(
-                    "${surah.englishNameTranslation} | ${surah.revelationType}",
-                  ),
-                  trailing: Text(
-                    surah.name,
-                    style: const TextStyle(fontSize: 18),
-                  ),
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => SurahDetailsScreen(surah: surah),
+                elevation: 4,
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: ListTile(
+                    title: Text("${surah.number}. ${surah.englishName}"),
+                    subtitle: Text(
+                      "${surah.englishNameTranslation} | ${surah.revelationType}",
+                    ),
+                    trailing: Text(
+                      surah.name,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
-                    );
-                  },
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => SurahDetailsScreen(surah: surah),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               );
             },

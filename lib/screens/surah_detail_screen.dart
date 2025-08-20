@@ -13,7 +13,10 @@ class SurahDetailsScreen extends ConsumerWidget {
     final ayahsAsync = ref.watch(quranProvider);
 
     return Scaffold(
-      appBar: AppBar(title: Text(surah.englishName)),
+      appBar: AppBar(
+        title: Text(surah.englishName),
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.tune))],
+      ),
       body: ayahsAsync.when(
         data: (ayahs) {
           return ListView.builder(
@@ -27,10 +30,20 @@ class SurahDetailsScreen extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text('${ayah.numberInSurah}.'),
+                      Text(
+                        '${ayah.numberInSurah}.',
+                        style: TextStyle(
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onSecondaryContainer,
+                        ),
+                      ),
                       Text(
                         ayah.arabicText,
-                        style: const TextStyle(
+                        style: TextStyle(
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onSecondaryContainer,
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                           fontFamily: "Amiri",
@@ -40,14 +53,19 @@ class SurahDetailsScreen extends ConsumerWidget {
                       const SizedBox(height: 8),
                       Text(
                         ayah.banglaText,
-                        style: const TextStyle(fontSize: 18),
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onSecondaryContainer,
+                        ),
                         textAlign: TextAlign.left,
                       ),
                       const SizedBox(height: 8),
                       Text(
                         "Page: ${ayah.page}",
                         style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-                        textAlign: TextAlign.right,
+                        textAlign: TextAlign.center,
                       ),
                     ],
                   ),
