@@ -16,4 +16,5 @@ final List<Category> categories = [
   Category(id: '4', title: 'Q/A', icon: Icons.question_answer),
   Category(id: '5', title: 'Events', icon: Icons.event),
   Category(id: '6', title: 'Donation', icon: Icons.handshake),
+  Category(id: '7', title: 'Mosques', icon: Icons.mosque_rounded),
 ];

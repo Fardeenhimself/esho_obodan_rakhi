@@ -8,49 +8,59 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.primary,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          DrawerHeader(
-            child: Icon(
-              Icons.mosque,
-              size: 40,
-              color: Theme.of(context).colorScheme.onPrimary,
-            ),
-          ),
-
-          ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 2),
-            leading: Icon(
-              Icons.home_filled,
-              color: Theme.of(context).colorScheme.onPrimary,
-            ),
-            title: Text(
-              'H O M E',
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: Theme.of(context).colorScheme.onPrimary,
+          Column(
+            children: [
+              DrawerHeader(
+                child: Icon(
+                  Icons.mosque,
+                  size: 40,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
               ),
-            ),
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-          ),
-          ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 2),
-            leading: Icon(
-              Icons.settings,
-              color: Theme.of(context).colorScheme.onPrimary,
-            ),
-            title: Text(
-              'S E T T I N G S',
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: Theme.of(context).colorScheme.onPrimary,
+              ListTile(
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 2,
+                ),
+                leading: Icon(
+                  Icons.home_filled,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+                title: Text(
+                  'H O M E',
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
               ),
-            ),
-            onTap: () {
-              Navigator.of(context).pop();
-            },
+              ListTile(
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 2,
+                ),
+                leading: Icon(
+                  Icons.settings,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+                title: Text(
+                  'S E T T I N G S',
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
           ),
           ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 2),
+            contentPadding: EdgeInsets.only(left: 12, bottom: 15),
             leading: Icon(
               Icons.volunteer_activism,
               color: Theme.of(context).colorScheme.onPrimary,
@@ -61,8 +71,14 @@ class MyDrawer extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onPrimary,
               ),
             ),
+            subtitle: Text(
+              'Help us keep the app add free',
+              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
+            ),
             onTap: () {
-              Navigator.of(context).pop();
+              //
             },
           ),
         ],
