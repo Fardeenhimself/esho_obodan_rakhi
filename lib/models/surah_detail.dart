@@ -2,12 +2,12 @@ import 'package:islamic_app/models/verse.dart';
 
 class SurahDetail {
   final int id;
-  final String name; // Arabic
-  final String transliteration; // e.g. Al-Fatihah
-  final String translation; // depends on lang
-  final String type; // meccan/medinan
+  final String name;
+  final String transliteration;
+  final String translation;
+  final String type;
   final int totalVerses;
-  final Map<String, dynamic> audio; // pass-through (optional use)
+  final Map<String, dynamic> audio;
   final List<Verse> verses;
 
   SurahDetail({

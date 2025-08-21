@@ -1,7 +1,7 @@
 class Verse {
-  final int id; // in-surah verse number (1..n)
-  final String arabic; // "text"
-  final String meaning; // "translation" in chosen lang
+  final int id;
+  final String arabic;
+  final String meaning;
 
   Verse({required this.id, required this.arabic, required this.meaning});
 
