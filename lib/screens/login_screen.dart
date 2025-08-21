@@ -4,7 +4,7 @@ import 'package:islamic_app/components/my_auth_text_field.dart';
 import '../components/my_button.dart';
 
 class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key, required this.onTap});
+  LoginScreen({super.key, this.onTap});
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();

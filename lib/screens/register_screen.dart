@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:islamic_app/components/my_auth_text_field.dart';
 import 'package:islamic_app/components/my_button.dart';
 import 'package:islamic_app/providers/signup_provider.dart';
+import 'package:islamic_app/screens/login_screen.dart';
 
 class RegisterScreen extends ConsumerStatefulWidget {
   RegisterScreen({super.key, required this.onTap});
@@ -47,7 +48,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     final pin = _passwordController.text.trim();
     final pin_confirmation = _confirmPWController.text.trim();
 
-    // 🛡 Validation checks
+    // no empty fields
     if (name.isEmpty ||
         email.isEmpty ||
         phone.isEmpty ||
@@ -62,6 +63,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
       return;
     }
 
+    // no kola.mail
     if (!isValidEmailDomain(email)) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -72,6 +74,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
       return;
     }
 
+    // pin and cpin match
     if (pin != pin_confirmation) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -82,7 +85,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
       return;
     }
 
-    // 📞 Optional: phone length check
+    // 11 character number
     if (phone.length != 11) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -93,7 +96,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
       return;
     }
 
-    // ✅ If all checks pass, proceed with signup
+    // checks == passed ? hit api : error
     setState(() {
       isLoading = true;
     });
@@ -117,6 +120,10 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(res.message)));
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => LoginScreen()),
+          );
         })
         .catchError((err) {
           print(err);
