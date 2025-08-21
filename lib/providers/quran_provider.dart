@@ -38,7 +38,9 @@ final surahListProvider = FutureProvider<List<AllSurahs>>((ref) async {
 
   // 1) Try cache
   final cached = await repo.getSurahList(lang);
-  if (cached.isNotEmpty) return cached;
+  final hasLangData =
+      cached.isNotEmpty && cached.any((s) => s.translation.trim().isNotEmpty);
+  if (hasLangData) return cached;
 
   // 2) Fetch & cache
   final remote = await api.fetchSurahList(lang: lang);
@@ -58,12 +60,15 @@ final surahDetailProvider = FutureProvider.family<SurahDetail, int>((
 
   // 1) Try cache
   final cached = await repo.getSurahDetail(surahId, lang);
-  if (cached != null && cached.verses.isNotEmpty) return cached;
+  final hasLangData =
+      cached != null &&
+      cached.verses.isNotEmpty &&
+      cached.verses.any((v) => v.meaning.trim().isNotEmpty);
+
+  if (hasLangData) return cached;
 
   // 2) Fetch & cache
   final remote = await api.fetchSurahDetail(surahId: surahId, lang: lang);
   await repo.upsertSurahDetail(lang, remote);
-
-  // Return freshly saved detail (or remote directly)
   return remote;
 });
