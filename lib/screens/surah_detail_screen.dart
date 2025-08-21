@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:islamic_app/components/filter_drawer.dart';
 import 'package:islamic_app/models/sura.dart';
 import 'package:islamic_app/providers/quran_provider.dart';
 
@@ -15,8 +16,9 @@ class SurahDetailsScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(surah.englishName),
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.tune))],
+        //actions: [IconButton(onPressed: () {}, icon: Icon(Icons.tune))],
       ),
+      endDrawer: FilterDrawer(),
       body: ayahsAsync.when(
         data: (ayahs) {
           return ListView.builder(
