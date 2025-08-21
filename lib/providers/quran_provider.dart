@@ -1,5 +1,5 @@
-import 'package:islamic_app/models/sura.dart';
-import 'package:islamic_app/models/surah_detail.dart';
+import 'package:islamic_app/models/core_models/sura.dart';
+import 'package:islamic_app/models/core_models/surah_detail.dart';
 import 'package:islamic_app/services/core/api_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:islamic_app/services/database/quran_cache.dart';

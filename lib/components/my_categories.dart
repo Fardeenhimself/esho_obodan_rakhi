@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islamic_app/models/category.dart';
+import 'package:islamic_app/models/core_models/category.dart';
 
 class MyCategories extends StatelessWidget {
   const MyCategories({super.key, required this.categoryItems});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:islamic_app/components/filter_drawer.dart';
-import 'package:islamic_app/models/surah_detail.dart';
+import 'package:islamic_app/models/core_models/surah_detail.dart';
 import 'package:islamic_app/providers/quran_provider.dart';
 
 class SurahDetailPage extends ConsumerWidget {

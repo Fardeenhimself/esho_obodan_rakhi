@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:islamic_app/components/my_auth_text_field.dart';
 import 'package:islamic_app/components/my_button.dart';
+import 'package:islamic_app/providers/signup_provider.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends ConsumerStatefulWidget {
   RegisterScreen({super.key, required this.onTap});
 
   final void Function()? onTap;
+  @override
+  ConsumerState<RegisterScreen> createState() => _RegisterScreenState();
+}
 
+class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   // Controllers for text and password
-  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPWController = TextEditingController();
+  bool isLoading = false;
 
   // Helper method to validate email domain
   bool isValidEmailDomain(String email) {
@@ -59,7 +67,7 @@ class RegisterScreen extends StatelessWidget {
               hintText: 'নাম',
               obscureText: false,
               prefixIcon: Icon(Icons.person),
-              controller: _usernameController,
+              controller: _nameController,
               keyboardType: TextInputType.text,
             ),
             // Email
@@ -70,9 +78,18 @@ class RegisterScreen extends StatelessWidget {
               controller: _emailController,
               keyboardType: TextInputType.text,
             ),
+            //Phone
+            MyAuthTextField(
+              hintText: 'ফোন নাম্বর',
+              obscureText: false,
+              prefixIcon: Icon(Icons.smartphone),
+              controller: _phoneController,
+              keyboardType: TextInputType.number,
+              maxLength: 11,
+            ),
             // Password
             MyAuthTextField(
-              hintText: '৪ ডিজিটের পিন লিখুন',
+              hintText: 'পিন লিখুন',
               obscureText: true,
               prefixIcon: Icon(Icons.password_rounded),
               controller: _passwordController,
@@ -88,7 +105,41 @@ class RegisterScreen extends StatelessWidget {
               keyboardType: TextInputType.number,
             ),
             // Login Button
-            MyButton(text: 'রেজিস্টার', onTap: () {}),
+            isLoading
+                ? const CircularProgressIndicator(color: Colors.white)
+                : MyButton(
+                    text: 'রেজিস্টার',
+                    onTap: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+                      final signupFuture = ref.refresh(
+                        signupProvider({
+                          "name": _nameController.text,
+                          "email": _emailController.text,
+                          "phone": _phoneController.text,
+                          "pin": _passwordController.text,
+                          "pin_confirmation": _confirmPWController.text,
+                        }).future,
+                      );
+                      signupFuture
+                          .then((res) {
+                            print('successfull');
+                            setState(() {
+                              isLoading = false;
+                            });
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text(res.message)),
+                            );
+                          })
+                          .catchError((err) {
+                            print(err);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Error: $err")),
+                            );
+                          });
+                    },
+                  ),
             const SizedBox(height: 20),
             // Register Now
             Row(
@@ -97,7 +148,7 @@ class RegisterScreen extends StatelessWidget {
                 Text('এ্যাকাউন্ট আছে?', style: TextStyle(color: Colors.white)),
                 const SizedBox(width: 5),
                 GestureDetector(
-                  onTap: onTap,
+                  onTap: widget.onTap,
                   child: Text(
                     'লগইন করুন',
                     style: TextStyle(

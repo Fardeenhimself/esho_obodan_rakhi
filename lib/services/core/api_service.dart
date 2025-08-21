@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 //import 'package:islamic_app/models/ayahs.dart';
-import 'package:islamic_app/models/sura.dart';
+import 'package:islamic_app/models/core_models/sura.dart';
 import 'package:http/http.dart' as http;
-import 'package:islamic_app/models/surah_detail.dart';
+import 'package:islamic_app/models/core_models/surah_detail.dart';
 
 class QuranApiService {
   static const String _base = 'https://alquran-api.pages.dev/api/quran';

@@ -1,4 +1,4 @@
-import 'package:islamic_app/models/verse.dart';
+import 'package:islamic_app/models/core_models/verse.dart';
 
 class SurahDetail {
   final int id;

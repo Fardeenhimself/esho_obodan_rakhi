@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islamic_app/models/category.dart';
+import 'package:islamic_app/models/core_models/category.dart';
 
 class CategoryDetailsScreen extends StatelessWidget {
   const CategoryDetailsScreen({super.key, required this.category});

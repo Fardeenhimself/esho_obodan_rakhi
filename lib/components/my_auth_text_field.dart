@@ -8,6 +8,7 @@ class MyAuthTextField extends StatelessWidget {
     required this.prefixIcon,
     required this.keyboardType,
     required this.controller,
+    this.maxLength,
     this.focusNode,
   });
 
@@ -17,6 +18,7 @@ class MyAuthTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final TextEditingController controller;
   final FocusNode? focusNode;
+  final int? maxLength;
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +31,14 @@ class MyAuthTextField extends StatelessWidget {
         controller: controller,
         obscureText: obscureText,
         keyboardType: keyboardType,
+        maxLength: maxLength,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(
-              color: Colors.white,
-            ),
+            borderSide: BorderSide(color: Colors.white),
           ),
           fillColor: Colors.green.shade50,
           filled: true,

@@ -1,6 +1,6 @@
-import 'package:islamic_app/models/sura.dart';
-import 'package:islamic_app/models/surah_detail.dart';
-import 'package:islamic_app/models/verse.dart';
+import 'package:islamic_app/models/core_models/sura.dart';
+import 'package:islamic_app/models/core_models/surah_detail.dart';
+import 'package:islamic_app/models/core_models/verse.dart';
 import 'package:sqflite/sqflite.dart';
 
 import 'quran_db.dart';
