@@ -32,13 +32,101 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
       'live.com',
       'aol.com',
     ];
-
     try {
       final domain = email.split('@').last.toLowerCase();
       return allowedDomains.contains(domain);
     } catch (e) {
       return false;
     }
+  }
+
+  void register() async {
+    final name = _nameController.text.trim();
+    final email = _emailController.text.trim();
+    final phone = _phoneController.text.trim();
+    final pin = _passwordController.text.trim();
+    final pin_confirmation = _confirmPWController.text.trim();
+
+    // 🛡 Validation checks
+    if (name.isEmpty ||
+        email.isEmpty ||
+        phone.isEmpty ||
+        pin.isEmpty ||
+        pin_confirmation.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('সব ফিল্ড পূরণ করুন'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    if (!isValidEmailDomain(email)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('সঠিক ইমেইল ব্যবহার করুন'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    if (pin != pin_confirmation) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('পাসওয়ার্ড মিলছে না'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    // 📞 Optional: phone length check
+    if (phone.length != 11) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('ফোন নাম্বার ১১ সংখ্যার হতে হবে'),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
+    // ✅ If all checks pass, proceed with signup
+    setState(() {
+      isLoading = true;
+    });
+
+    final signupFuture = ref.refresh(
+      signupProvider({
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "pin": pin,
+        "pin_confirmation": pin_confirmation,
+      }).future,
+    );
+
+    signupFuture
+        .then((res) {
+          print('successfull');
+          setState(() {
+            isLoading = false;
+          });
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(res.message)));
+        })
+        .catchError((err) {
+          print(err);
+          setState(() {
+            isLoading = false;
+          });
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text("Error: $err")));
+        });
   }
 
   @override
@@ -85,7 +173,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
               prefixIcon: Icon(Icons.smartphone),
               controller: _phoneController,
               keyboardType: TextInputType.number,
-              maxLength: 11,
             ),
             // Password
             MyAuthTextField(
@@ -107,39 +194,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
             // Login Button
             isLoading
                 ? const CircularProgressIndicator(color: Colors.white)
-                : MyButton(
-                    text: 'রেজিস্টার',
-                    onTap: () async {
-                      setState(() {
-                        isLoading = true;
-                      });
-                      final signupFuture = ref.refresh(
-                        signupProvider({
-                          "name": _nameController.text,
-                          "email": _emailController.text,
-                          "phone": _phoneController.text,
-                          "pin": _passwordController.text,
-                          "pin_confirmation": _confirmPWController.text,
-                        }).future,
-                      );
-                      signupFuture
-                          .then((res) {
-                            print('successfull');
-                            setState(() {
-                              isLoading = false;
-                            });
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(res.message)),
-                            );
-                          })
-                          .catchError((err) {
-                            print(err);
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text("Error: $err")),
-                            );
-                          });
-                    },
-                  ),
+                : MyButton(text: 'রেজিস্টার', onTap: register),
             const SizedBox(height: 20),
             // Register Now
             Row(
