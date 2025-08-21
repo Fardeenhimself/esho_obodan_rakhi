@@ -21,7 +21,12 @@ class SurahDetailPage extends ConsumerWidget {
     final translationFontSize = ref.watch(translationFontSizeProvider);
 
     return Scaffold(
-      appBar: AppBar(title: Text(heading.toUpperCase())),
+      appBar: AppBar(
+        title: Text(
+          heading.toUpperCase(),
+          style: TextStyle(letterSpacing: 1.2),
+        ),
+      ),
       endDrawer: FilterDrawer(),
       body: detailAsync.when(
         data: (SurahDetail d) => ListView.builder(

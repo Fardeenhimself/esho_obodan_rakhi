@@ -39,24 +39,18 @@ class AlQuranScreen extends ConsumerWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Row(
-                    children: [
-                      Text(
-                        s.translation,
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).colorScheme.onSurface,
-                        ),
-                      ),
-                      const SizedBox(width: 4),
-                      Text('|'),
-                      const SizedBox(width: 4),
-                      Text(
-                        s.type[0].toUpperCase() + s.type.substring(1),
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).colorScheme.onSurface,
-                        ),
-                      ),
-                    ],
+                  Text(
+                    s.translation,
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  Text(
+                    s.type[0].toUpperCase() + s.type.substring(1),
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
                   ),
                 ],
               ),
