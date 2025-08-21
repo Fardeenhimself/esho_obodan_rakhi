@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:islamic_app/components/my_auth_text_field.dart';
 import 'package:islamic_app/components/my_button.dart';
@@ -34,7 +33,6 @@ class RegisterScreen extends StatelessWidget {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,11 +42,7 @@ class RegisterScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // Logo
-            Icon(
-              Icons.mosque,
-              size: 50,
-              color: Colors.white,
-            ),
+            Icon(Icons.mosque, size: 50, color: Colors.white),
             const SizedBox(height: 12),
             // Some Text
             Text(
@@ -94,18 +88,13 @@ class RegisterScreen extends StatelessWidget {
               keyboardType: TextInputType.number,
             ),
             // Login Button
-            MyButton(text: 'রেজিস্টার', onTap: (){}),
+            MyButton(text: 'রেজিস্টার', onTap: () {}),
             const SizedBox(height: 20),
             // Register Now
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  'এ্যাকাউন্ট আছে?',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
+                Text('এ্যাকাউন্ট আছে?', style: TextStyle(color: Colors.white)),
                 const SizedBox(width: 5),
                 GestureDetector(
                   onTap: onTap,
