@@ -30,8 +30,7 @@ final quranCacheRepoProvider = Provider<QuranCacheRepo>(
   (_) => QuranCacheRepo(),
 );
 
-/// Surah list — rebuilds when lang changes
-// Surah list — cache-first, then network, then cache update
+// Surah list: first cache, else request api, then cache update...
 final surahListProvider = FutureProvider<List<AllSurahs>>((ref) async {
   final api = ref.watch(quranApiProvider);
   final repo = ref.watch(quranCacheRepoProvider);
@@ -47,8 +46,8 @@ final surahListProvider = FutureProvider<List<AllSurahs>>((ref) async {
   return remote;
 });
 
-/// Surah detail — depends on lang; family by surahId
-// Surah detail — cache-first, family by surahId
+// Surah detail — first cache, else request api, then cache update  family by suraID...
+
 final surahDetailProvider = FutureProvider.family<SurahDetail, int>((
   ref,
   surahId,

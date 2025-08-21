@@ -19,7 +19,7 @@ ThemeData lightTheme = ThemeData(
     elevation: 1,
     titleSpacing: 1,
   ),
-  textTheme: GoogleFonts.poppinsTextTheme(),
+  textTheme: GoogleFonts.notoSerifBengaliTextTheme(),
 );
 
 ThemeData darkTheme = ThemeData(
@@ -33,5 +33,5 @@ ThemeData darkTheme = ThemeData(
     titleSpacing: 1,
   ),
 
-  textTheme: GoogleFonts.poppinsTextTheme(),
+  textTheme: GoogleFonts.notoSerifBengaliTextTheme(),
 );

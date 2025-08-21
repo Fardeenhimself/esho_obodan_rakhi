@@ -34,6 +34,12 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       body: _screens[_initialIndex],
       bottomNavigationBar: NavigationBar(
+        labelTextStyle: WidgetStatePropertyAll(
+          Theme.of(context).textTheme.labelLarge!.copyWith(
+            color: Theme.of(context).colorScheme.secondary,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         elevation: 2,
         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         indicatorColor: Theme.of(context).colorScheme.onPrimary,
@@ -46,7 +52,7 @@ class _MainPageState extends State<MainPage> {
               color: Theme.of(context).colorScheme.tertiary,
               size: 30,
             ),
-            label: 'HOME',
+            label: 'হোম',
           ),
           NavigationDestination(
             icon: Icon(
@@ -54,7 +60,7 @@ class _MainPageState extends State<MainPage> {
               color: Theme.of(context).colorScheme.tertiary,
               size: 30,
             ),
-            label: 'DONATION',
+            label: 'অনুদান',
           ),
           NavigationDestination(
             icon: Icon(
@@ -62,7 +68,7 @@ class _MainPageState extends State<MainPage> {
               color: Theme.of(context).colorScheme.tertiary,
               size: 30,
             ),
-            label: 'EVENTS',
+            label: 'অনুষ্ঠান',
           ),
           NavigationDestination(
             icon: Icon(
@@ -70,7 +76,7 @@ class _MainPageState extends State<MainPage> {
               color: Theme.of(context).colorScheme.tertiary,
               size: 30,
             ),
-            label: 'PROFILE',
+            label: 'প্রোফাইল',
           ),
         ],
       ),

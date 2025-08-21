@@ -8,7 +8,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('U S E R  P R O F I L E'),
+        title: Text('আপনার প্রোফাইল'),
         centerTitle: true,
         actions: [
           IconButton(
@@ -64,7 +64,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'Dummy Name',
+                    'রহমত আলী',
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       color: Theme.of(context).colorScheme.onPrimaryContainer,
                       fontWeight: FontWeight.bold,
@@ -90,7 +90,7 @@ class ProfileScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Edit Profile',
+                          'ইডিট করুন',
                           style: Theme.of(context).textTheme.labelMedium!
                               .copyWith(
                                 color: Theme.of(context).colorScheme.onPrimary,
@@ -135,7 +135,7 @@ class ProfileScreen extends StatelessWidget {
                         borderRadius: BorderRadiusGeometry.circular(12),
                       ),
                       onTap: () {},
-                      title: Text('Your Donations'),
+                      title: Text('আপনার অনুদান'),
                       trailing: Icon(Icons.arrow_forward_ios_rounded),
                     ),
                     ListTile(
@@ -149,7 +149,7 @@ class ProfileScreen extends StatelessWidget {
                         borderRadius: BorderRadiusGeometry.circular(12),
                       ),
                       onTap: () {},
-                      title: Text('Your Events'),
+                      title: Text('আপনার অনুষ্ঠান'),
                       trailing: Icon(Icons.arrow_forward_ios_rounded),
                     ),
                     ListTile(
@@ -163,7 +163,7 @@ class ProfileScreen extends StatelessWidget {
                         borderRadius: BorderRadiusGeometry.circular(12),
                       ),
                       onTap: () {},
-                      title: Text('Achievements'),
+                      title: Text('কৃতিত্ব সমূহ'),
                       trailing: Icon(Icons.arrow_forward_ios_rounded),
                     ),
                   ],
@@ -213,7 +213,7 @@ class ProfileScreen extends StatelessWidget {
                     );
                   },
                   title: Text(
-                    'Delete Account',
+                    'ডিলিট একাউন্ট',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.error,

@@ -33,8 +33,9 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 30),
               child: MyCard(
-                message: 'Even a smile is considered as charity',
-                msgInfo: 'Al-Hadith',
+                message:
+                    'তোমাদের মধ্যে সেই উত্তম যে নিজে কোরআন শিখে এবং অন্যকে শিক্ষা দেয়',
+                msgInfo: '~সহীহ বুখারী',
               ),
             ),
             const SizedBox(height: 30),

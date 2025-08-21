@@ -15,7 +15,7 @@ class AlQuranScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      appBar: AppBar(title: Text('Al Quran (${lang.label})')),
+      appBar: AppBar(title: Text('আল-কোরআন (${lang.label})')),
       endDrawer: const FilterDrawer(),
       body: surahsAsync.when(
         data: (surahs) => ListView.separated(
