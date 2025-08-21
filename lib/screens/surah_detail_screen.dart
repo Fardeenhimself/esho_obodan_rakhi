@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:islamic_app/components/filter_drawer.dart';
 import 'package:islamic_app/models/surah_detail.dart';
 import 'package:islamic_app/providers/quran_provider.dart';
 
@@ -16,9 +17,12 @@ class SurahDetailPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final detailAsync = ref.watch(surahDetailProvider(surahId));
+    final arabicFontSize = ref.watch(arabicFontSizeProvider);
+    final translationFontSize = ref.watch(translationFontSizeProvider);
 
     return Scaffold(
       appBar: AppBar(title: Text(heading.toUpperCase())),
+      endDrawer: FilterDrawer(),
       body: detailAsync.when(
         data: (SurahDetail d) => ListView.builder(
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
@@ -49,13 +53,11 @@ class SurahDetailPage extends ConsumerWidget {
                           child: Text(
                             v.arabic,
                             textAlign: TextAlign.right,
-                            style: Theme.of(context).textTheme.titleLarge!
-                                .copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).colorScheme.onSurface,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                            style: TextStyle(
+                              fontSize: arabicFontSize.toDouble(),
+                              color: Theme.of(context).colorScheme.onSurface,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ],
@@ -66,9 +68,10 @@ class SurahDetailPage extends ConsumerWidget {
                     Text(
                       v.meaning,
                       textAlign: TextAlign.left,
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      style: TextStyle(
+                        fontSize: translationFontSize.toDouble(),
                         color: Theme.of(context).colorScheme.onSurface,
-                        height: 1.4,
+                        height: 1.3,
                       ),
                     ),
                   ],

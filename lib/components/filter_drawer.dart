@@ -9,6 +9,8 @@ class FilterDrawer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lang = ref.watch(translationLangProvider);
+    final arabicFontSize = ref.watch(arabicFontSizeProvider);
+    final translationFontSize = ref.watch(translationFontSizeProvider);
 
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.surface,
@@ -25,6 +27,8 @@ class FilterDrawer extends ConsumerWidget {
               ),
               const Divider(indent: 25, endIndent: 25),
               const SizedBox(height: 12),
+
+              // 🔹 Language Switch
               Text(
                 'Translation',
                 style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -33,7 +37,7 @@ class FilterDrawer extends ConsumerWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   color: Theme.of(context).colorScheme.secondaryContainer
@@ -87,7 +91,10 @@ class FilterDrawer extends ConsumerWidget {
                   ],
                 ),
               ),
+
               const SizedBox(height: 12),
+
+              // 🔹 Arabic Font Slider
               Text(
                 'Arabic Font Size',
                 style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -96,46 +103,37 @@ class FilterDrawer extends ConsumerWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   color: Theme.of(context).colorScheme.secondaryContainer
                       .withAlpha((0.3 * 255).round()),
                 ),
-                child: StatefulBuilder(
-                  builder: (context, setModalState) {
-                    int _selectedCount = 16;
-                    return Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SliderTheme(
-                          data: Theme.of(context).sliderTheme,
-                          child: Slider(
-                            min: 1,
-                            max: 100,
-                            divisions: 99,
-                            value: _selectedCount.toDouble(),
-                            onChanged: (value) {
-                              setModalState(() {
-                                _selectedCount = value.toInt();
-                              });
-                            },
-                          ),
-                        ),
-                        Text(
-                          'Font Size: $_selectedCount',
-                          style: Theme.of(context).textTheme.labelLarge!
-                              .copyWith(
-                                color: Theme.of(context).colorScheme.onSurface,
-                              ),
-                        ),
-                        const SizedBox(height: 20),
-                      ],
-                    );
-                  },
+                child: Column(
+                  children: [
+                    Slider(
+                      min: 8,
+                      max: 50,
+                      divisions: 42,
+                      value: arabicFontSize.toDouble(),
+                      onChanged: (value) {
+                        ref.read(arabicFontSizeProvider.notifier).state = value
+                            .toInt();
+                      },
+                    ),
+                    Text(
+                      'Font Size: $arabicFontSize',
+                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                    ),
+                  ],
                 ),
               ),
+
               const SizedBox(height: 12),
+
+              // 🔹 Translation Font Slider
               Text(
                 '${lang.label} Font Size',
                 style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -144,43 +142,31 @@ class FilterDrawer extends ConsumerWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   color: Theme.of(context).colorScheme.secondaryContainer
                       .withAlpha((0.3 * 255).round()),
                 ),
-                child: StatefulBuilder(
-                  builder: (context, setModalState) {
-                    int _selectedCount = 16;
-                    return Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SliderTheme(
-                          data: Theme.of(context).sliderTheme,
-                          child: Slider(
-                            min: 1,
-                            max: 100,
-                            divisions: 99,
-                            value: _selectedCount.toDouble(),
-                            onChanged: (value) {
-                              setModalState(() {
-                                _selectedCount = value.toInt();
-                              });
-                            },
-                          ),
-                        ),
-                        Text(
-                          'Font Size: $_selectedCount',
-                          style: Theme.of(context).textTheme.labelLarge!
-                              .copyWith(
-                                color: Theme.of(context).colorScheme.onSurface,
-                              ),
-                        ),
-                        const SizedBox(height: 20),
-                      ],
-                    );
-                  },
+                child: Column(
+                  children: [
+                    Slider(
+                      min: 8,
+                      max: 50,
+                      divisions: 42,
+                      value: translationFontSize.toDouble(),
+                      onChanged: (value) {
+                        ref.read(translationFontSizeProvider.notifier).state =
+                            value.toInt();
+                      },
+                    ),
+                    Text(
+                      'Font Size: $translationFontSize',
+                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

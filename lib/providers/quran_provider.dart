@@ -17,6 +17,12 @@ extension TranslationLangX on TranslationLang {
 // Like if we create a varaible of the probider called langSelector. Instead of
 // langSelector.en we can use langSeelctor.label that will call the label according to selected version...
 
+// Arabic font size provider
+final arabicFontSizeProvider = StateProvider<int>((ref) => 16);
+
+// Translation font size provider
+final translationFontSizeProvider = StateProvider<int>((ref) => 16);
+
 /// Selected language provider (defaults to Bengali)
 final translationLangProvider = StateProvider<TranslationLang>(
   (_) => TranslationLang.bn,
