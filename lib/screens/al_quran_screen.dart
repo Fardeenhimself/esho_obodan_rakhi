@@ -14,6 +14,7 @@ class AlQuranScreen extends ConsumerWidget {
     final lang = ref.watch(translationLangProvider);
 
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(title: Text('Al Quran (${lang.label})')),
       endDrawer: const FilterDrawer(),
       body: surahsAsync.when(
@@ -31,17 +32,38 @@ class AlQuranScreen extends ConsumerWidget {
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(s.transliteration, style: const TextStyle(fontSize: 14)),
+                  Text(
+                    s.transliteration,
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  ),
                   const SizedBox(height: 4),
-                  Text(s.translation, style: const TextStyle(fontSize: 14)),
-                  Text(s.type[0].toUpperCase() + s.type.substring(1)),
+                  Row(
+                    children: [
+                      Text(
+                        s.translation,
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).colorScheme.onSurface,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      Text('|'),
+                      const SizedBox(width: 4),
+                      Text(
+                        s.type[0].toUpperCase() + s.type.substring(1),
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).colorScheme.onSurface,
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
               trailing: Text(
                 s.name,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
               onTap: () {

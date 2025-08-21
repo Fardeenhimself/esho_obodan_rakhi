@@ -18,48 +18,58 @@ class SurahDetailPage extends ConsumerWidget {
     final detailAsync = ref.watch(surahDetailProvider(surahId));
 
     return Scaffold(
-      appBar: AppBar(title: Text(heading)),
+      appBar: AppBar(title: Text(heading.toUpperCase())),
       body: detailAsync.when(
-        data: (SurahDetail d) => ListView.builder(
+        data: (SurahDetail detail) => ListView.builder(
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-          itemCount: d.verses.length,
-          itemBuilder: (context, i) {
-            final v = d.verses[i];
+          itemCount: detail.verses.length,
+          itemBuilder: (context, index) {
+            final text = detail.verses[index];
             return Card(
-              margin: const EdgeInsets.symmetric(vertical: 6),
+              margin: const EdgeInsets.symmetric(vertical: 12),
               child: Padding(
                 padding: const EdgeInsets.all(14.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    // Arabic
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        // Verses number
                         Text(
-                          '${v.id}',
-                          style: Theme.of(context).textTheme.labelMedium,
+                          '${text.id}',
+                          style: Theme.of(context).textTheme.labelMedium!
+                              .copyWith(
+                                color: Theme.of(context).colorScheme.onSurface,
+                              ),
                         ),
                         const SizedBox(width: 8),
+                        // Arabic verse
                         Expanded(
                           child: Text(
-                            v.arabic,
+                            text.arabic,
                             textAlign: TextAlign.right,
-                            style: const TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w600,
-                              // fontFamily: 'Amiri', // if you add an Arabic font
-                            ),
+                            style: Theme.of(context).textTheme.titleLarge!
+                                .copyWith(
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurface,
+                                  fontWeight: FontWeight.w600,
+                                ),
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 10),
-                    // Translation (bn/en)
+
+                    // Translation verse
                     Text(
-                      v.meaning,
+                      text.meaning,
                       textAlign: TextAlign.left,
-                      style: const TextStyle(fontSize: 16, height: 1.4),
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        color: Theme.of(context).colorScheme.onSurface,
+                        height: 1.4,
+                      ),
                     ),
                   ],
                 ),
