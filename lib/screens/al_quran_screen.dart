@@ -22,18 +22,18 @@ class AlQuranScreen extends ConsumerWidget {
           itemCount: surahs.length,
           separatorBuilder: (_, __) => const Divider(height: 0),
           itemBuilder: (context, index) {
-            final AllSurahs sura = surahs[index];
+            final AllSurahs s = surahs[index];
             return ListTile(
               contentPadding: const EdgeInsets.symmetric(
                 horizontal: 16,
                 vertical: 8,
               ),
-              leading: Text('${sura.id}'),
+              leading: Text('${s.id}'),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    sura.transliteration,
+                    s.transliteration,
                     style: Theme.of(context).textTheme.labelLarge!.copyWith(
                       color: Theme.of(context).colorScheme.onSurface,
                     ),
@@ -42,7 +42,7 @@ class AlQuranScreen extends ConsumerWidget {
                   Row(
                     children: [
                       Text(
-                        sura.translation,
+                        s.translation,
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: Theme.of(context).colorScheme.onSurface,
                         ),
@@ -51,7 +51,7 @@ class AlQuranScreen extends ConsumerWidget {
                       Text('|'),
                       const SizedBox(width: 4),
                       Text(
-                        sura.type[0].toUpperCase() + sura.type.substring(1),
+                        s.type[0].toUpperCase() + s.type.substring(1),
                         style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                           color: Theme.of(context).colorScheme.onSurface,
                         ),
@@ -61,7 +61,7 @@ class AlQuranScreen extends ConsumerWidget {
                 ],
               ),
               trailing: Text(
-                sura.name,
+                s.name,
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
@@ -71,8 +71,8 @@ class AlQuranScreen extends ConsumerWidget {
                   context,
                   MaterialPageRoute(
                     builder: (_) => SurahDetailPage(
-                      surahId: sura.id,
-                      heading: sura.transliteration,
+                      surahId: s.id,
+                      heading: s.transliteration,
                     ),
                   ),
                 );

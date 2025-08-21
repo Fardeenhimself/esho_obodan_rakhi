@@ -20,11 +20,11 @@ class SurahDetailPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text(heading.toUpperCase())),
       body: detailAsync.when(
-        data: (SurahDetail detail) => ListView.builder(
+        data: (SurahDetail d) => ListView.builder(
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-          itemCount: detail.verses.length,
-          itemBuilder: (context, index) {
-            final text = detail.verses[index];
+          itemCount: d.verses.length,
+          itemBuilder: (context, i) {
+            final v = d.verses[i];
             return Card(
               margin: const EdgeInsets.symmetric(vertical: 12),
               child: Padding(
@@ -37,7 +37,7 @@ class SurahDetailPage extends ConsumerWidget {
                       children: [
                         // Verses number
                         Text(
-                          '${text.id}',
+                          '${v.id}',
                           style: Theme.of(context).textTheme.labelMedium!
                               .copyWith(
                                 color: Theme.of(context).colorScheme.onSurface,
@@ -47,7 +47,7 @@ class SurahDetailPage extends ConsumerWidget {
                         // Arabic verse
                         Expanded(
                           child: Text(
-                            text.arabic,
+                            v.arabic,
                             textAlign: TextAlign.right,
                             style: Theme.of(context).textTheme.titleLarge!
                                 .copyWith(
@@ -64,7 +64,7 @@ class SurahDetailPage extends ConsumerWidget {
 
                     // Translation verse
                     Text(
-                      text.meaning,
+                      v.meaning,
                       textAlign: TextAlign.left,
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         color: Theme.of(context).colorScheme.onSurface,

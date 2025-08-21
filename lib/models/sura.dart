@@ -15,6 +15,7 @@ class AllSurahs {
     required this.totalVerses,
   });
 
+  // deserialization
   factory AllSurahs.fromJson(Map<String, dynamic> json) {
     return AllSurahs(
       id: json['id'] as int,
@@ -24,5 +25,17 @@ class AllSurahs {
       type: json['type'] as String,
       totalVerses: json['total_verses'] as int,
     );
+  }
+
+  // Convert to Map for SQLite
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'transliteration': transliteration,
+      'translation': translation,
+      'type': type,
+      'total_verses': totalVerses,
+    };
   }
 }

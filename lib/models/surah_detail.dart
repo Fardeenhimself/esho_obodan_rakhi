@@ -21,6 +21,7 @@ class SurahDetail {
     required this.verses,
   });
 
+  // deserialization
   factory SurahDetail.fromJson(Map<String, dynamic> json) {
     final versesJson = (json['verses'] as List).cast<Map<String, dynamic>>();
     return SurahDetail(
@@ -33,5 +34,18 @@ class SurahDetail {
       audio: (json['audio'] as Map<String, dynamic>?) ?? const {},
       verses: versesJson.map((v) => Verse.fromJson(v)).toList(),
     );
+  }
+
+  // Convert to Map for SQLite (excluding verses)
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'transliteration': transliteration,
+      'translation': translation,
+      'type': type,
+      'total_verses': totalVerses,
+      'audio': audio.toString(),
+    };
   }
 }
