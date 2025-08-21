@@ -1,45 +1,73 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:islamic_app/providers/quran_provider.dart';
 
-class FilterDrawer extends StatelessWidget {
+class FilterDrawer extends ConsumerWidget {
   const FilterDrawer({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final lang = ref.watch(translationLangProvider);
+
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 12, top: 100),
-        child: Column(
-          children: [
-            Text(
-              'F I L T E R S',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                color: Theme.of(context).colorScheme.onSurface,
-              ),
-            ),
-            const Divider(indent: 50, endIndent: 50),
-            const SizedBox(height: 10),
-            ListTile(
-              leading: Text(
-                'Bangla Translation',
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 50, left: 15),
+          child: Column(
+            children: [
+              Text(
+                'F I L T E R S',
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
-              title: CupertinoSwitch(value: true, onChanged: (value) {}),
-            ),
-            const SizedBox(height: 10),
-            ListTile(
-              leading: Text(
-                'English Translation',
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                  color: Theme.of(context).colorScheme.onSurface,
-                ),
+              const Divider(indent: 25, endIndent: 25),
+              const SizedBox(height: 12),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'বাংলা',
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  ),
+                  CupertinoSwitch(
+                    value: lang == TranslationLang.bn,
+                    onChanged: (val) {
+                      if (val) {
+                        ref.read(translationLangProvider.notifier).state =
+                            TranslationLang.bn;
+                      }
+                    },
+                  ),
+                ],
               ),
-              title: CupertinoSwitch(value: false, onChanged: (value) {}),
-            ),
-          ],
+              const SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'English',
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+                  ),
+                  CupertinoSwitch(
+                    value: lang == TranslationLang.en,
+                    onChanged: (val) {
+                      if (val) {
+                        ref.read(translationLangProvider.notifier).state =
+                            TranslationLang.en;
+                      }
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

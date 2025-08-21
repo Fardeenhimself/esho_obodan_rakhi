@@ -1,3 +1,32 @@
+class AllSurahs {
+  final int id; // surah number
+  final String name; // Arabic name
+  final String transliteration;
+  final String translation; // depends on lang param
+  final String type; // meccan/medinan
+  final int totalVerses;
+
+  AllSurahs({
+    required this.id,
+    required this.name,
+    required this.transliteration,
+    required this.translation,
+    required this.type,
+    required this.totalVerses,
+  });
+
+  factory AllSurahs.fromJson(Map<String, dynamic> json) {
+    return AllSurahs(
+      id: json['id'] as int,
+      name: json['name'] as String,
+      transliteration: json['transliteration'] as String,
+      translation: json['translation'] as String,
+      type: json['type'] as String,
+      totalVerses: json['total_verses'] as int,
+    );
+  }
+}
+
 // class Surah {
 //   final int number;
 //   final String name;
@@ -24,44 +53,44 @@
 //     );
 //   }
 // }
-import 'package:islamic_app/models/ayahs.dart';
+// import 'package:islamic_app/models/ayahs.dart';
 
-class Surah {
-  final int number;
-  final String name;
-  final String englishName;
-  final String englishNameTranslation;
-  final String revelationType;
-  final List<Ayahs> ayahs;
+// class Surah {
+//   final int number;
+//   final String name;
+//   final String englishName;
+//   final String englishNameTranslation;
+//   final String revelationType;
+//   final List<Ayahs> ayahs;
 
-  Surah({
-    required this.number,
-    required this.name,
-    required this.englishName,
-    required this.englishNameTranslation,
-    required this.revelationType,
-    required this.ayahs,
-  });
+//   Surah({
+//     required this.number,
+//     required this.name,
+//     required this.englishName,
+//     required this.englishNameTranslation,
+//     required this.revelationType,
+//     required this.ayahs,
+//   });
 
-  factory Surah.fromJson({
-    required Map<String, dynamic> arabic,
-    required Map<String, dynamic> bangla,
-  }) {
-    final arabicAyahs = arabic['ayahs'] as List;
-    final banglaAyahs = bangla['ayahs'] as List;
+//   factory Surah.fromJson({
+//     required Map<String, dynamic> arabic,
+//     required Map<String, dynamic> bangla,
+//   }) {
+//     final arabicAyahs = arabic['ayahs'] as List;
+//     final banglaAyahs = bangla['ayahs'] as List;
 
-    final ayahs = List.generate(
-      arabicAyahs.length,
-      (i) => Ayahs.fromJson(arabic: arabicAyahs[i], bangla: banglaAyahs[i]),
-    );
+//     final ayahs = List.generate(
+//       arabicAyahs.length,
+//       (i) => Ayahs.fromJson(arabic: arabicAyahs[i], bangla: banglaAyahs[i]),
+//     );
 
-    return Surah(
-      number: arabic['number'],
-      name: arabic['name'],
-      englishName: arabic['englishName'],
-      englishNameTranslation: arabic['englishNameTranslation'],
-      revelationType: arabic['revelationType'],
-      ayahs: ayahs,
-    );
-  }
-}
+//     return Surah(
+//       number: arabic['number'],
+//       name: arabic['name'],
+//       englishName: arabic['englishName'],
+//       englishNameTranslation: arabic['englishNameTranslation'],
+//       revelationType: arabic['revelationType'],
+//       ayahs: ayahs,
+//     );
+//   }
+// }
