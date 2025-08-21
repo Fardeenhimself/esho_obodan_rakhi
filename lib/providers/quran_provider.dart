@@ -38,6 +38,8 @@ final surahListProvider = FutureProvider<List<AllSurahs>>((ref) async {
 
   // 1) Try cache
   final cached = await repo.getSurahList(lang);
+
+  // if the cache has no data it will go to step two aand fetch from api
   final hasLangData =
       cached.isNotEmpty && cached.any((s) => s.translation.trim().isNotEmpty);
   if (hasLangData) return cached;
@@ -49,7 +51,6 @@ final surahListProvider = FutureProvider<List<AllSurahs>>((ref) async {
 });
 
 // Surah detail — first cache, else request api, then cache update  family by suraID...
-
 final surahDetailProvider = FutureProvider.family<SurahDetail, int>((
   ref,
   surahId,
@@ -60,6 +61,8 @@ final surahDetailProvider = FutureProvider.family<SurahDetail, int>((
 
   // 1) Try cache
   final cached = await repo.getSurahDetail(surahId, lang);
+
+  // if the cache has no data it will go to step two aand fetch from api just like above...
   final hasLangData =
       cached != null &&
       cached.verses.isNotEmpty &&
