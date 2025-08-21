@@ -29,6 +29,7 @@ class LoginRepository {
       // Save token and role
       await _storage.write(key: "auth_token", value: res.token);
       await _storage.write(key: "user_role", value: res.user.role);
+      await _storage.write(key: "user_email", value: email);
 
       return res;
     } else {

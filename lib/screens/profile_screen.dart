@@ -58,10 +58,7 @@ class ProfileScreen extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundImage: AssetImage('assets/dp.png'),
-                  ),
+                  CircleAvatar(radius: 40, child: Icon(Icons.person, size: 50)),
                   const SizedBox(height: 10),
                   Text(
                     'রহমত আলী',

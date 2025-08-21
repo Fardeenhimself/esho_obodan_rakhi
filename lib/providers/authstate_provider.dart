@@ -5,8 +5,10 @@ import 'package:islamic_app/services/auth/login_repository.dart';
 class AuthState {
   final bool isLoggedIn;
   final String? role;
+  final String? name;
+  final String? email;
 
-  AuthState({required this.isLoggedIn, this.role});
+  AuthState({required this.isLoggedIn, this.role, this.name, this.email});
 }
 
 class AuthNotifier extends StateNotifier<AuthState> {

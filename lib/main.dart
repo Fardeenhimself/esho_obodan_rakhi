@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islamic_app/screens/home_page.dart';
-//import 'package:islamic_app/screens/home_page.dart';
-//import 'package:islamic_app/screens/login_screen.dart';
-import 'package:islamic_app/screens/main_page.dart';
 import 'package:islamic_app/services/auth/auth_gate.dart';
-import 'package:islamic_app/services/auth/login_or_register.dart';
-//import 'package:islamic_app/services/auth/login_or_register.dart';
 import 'package:islamic_app/theme/app_theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
