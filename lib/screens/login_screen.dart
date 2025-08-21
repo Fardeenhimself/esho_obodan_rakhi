@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:islamic_app/components/my_auth_text_field.dart';
+import 'package:islamic_app/providers/authstate_provider.dart';
+import 'package:islamic_app/providers/login_provider.dart';
 
 import '../components/my_button.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   LoginScreen({super.key, this.onTap});
 
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-
   final void Function()? onTap;
+
+  @override
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends ConsumerState<LoginScreen> {
+  final TextEditingController _emailController = TextEditingController();
+
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +58,35 @@ class LoginScreen extends StatelessWidget {
               keyboardType: TextInputType.number,
             ),
             // Login Button
-            MyButton(text: 'লগইন', onTap: () {}),
+            MyButton(
+              text: 'লগইন',
+              onTap: () async {
+                final email = _emailController.text.trim();
+                final pin = _passwordController.text.trim();
+
+                if (email.isEmpty || pin.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("সব ফিল্ড পূরণ করুন")),
+                  );
+                  return;
+                }
+
+                try {
+                  // call login through authProvider
+                  await ref.read(authProvider.notifier).login(email, pin);
+
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text("লগইন সফল!")));
+
+                  // No need to manually refresh; AuthGate will rebuild automatically
+                } catch (e) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text("লগইন ব্যর্থ: $e")));
+                }
+              },
+            ),
             const SizedBox(height: 20),
             // Register Now
             Row(
@@ -58,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                 Text('এ্যাকাউন্ট নেই?', style: TextStyle(color: Colors.white)),
                 const SizedBox(width: 5),
                 GestureDetector(
-                  onTap: onTap,
+                  onTap: widget.onTap,
                   child: Text(
                     'রেজিস্ট্রেশন করুন',
                     style: TextStyle(

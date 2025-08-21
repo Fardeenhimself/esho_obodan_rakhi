@@ -3,6 +3,7 @@ import 'package:islamic_app/screens/home_page.dart';
 //import 'package:islamic_app/screens/home_page.dart';
 //import 'package:islamic_app/screens/login_screen.dart';
 import 'package:islamic_app/screens/main_page.dart';
+import 'package:islamic_app/services/auth/auth_gate.dart';
 import 'package:islamic_app/services/auth/login_or_register.dart';
 //import 'package:islamic_app/services/auth/login_or_register.dart';
 import 'package:islamic_app/theme/app_theme.dart';
@@ -21,7 +22,7 @@ class IslmaicApp extends StatelessWidget {
     return MaterialApp(
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: LoginOrRegister(),
+      home: AuthGate(),
     );
   }
 }
