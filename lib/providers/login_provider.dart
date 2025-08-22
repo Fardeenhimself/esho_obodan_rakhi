@@ -49,6 +49,12 @@ class LoginNotifier extends StateNotifier<LoginState> {
     // invalidate the provider so that user data is cleared...
     _ref.invalidate(profileProvider);
   }
+
+  Future<void> clearLocalToken() async {
+    // Just clear the token locally, no API call
+    state = LoginState(isLoggedIn: false);
+    // Also remove from secure storage if needed
+  }
 }
 
 // Login repo provider

@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:islamic_app/components/my_dialog.dart';
+import 'package:islamic_app/providers/delete_provider.dart';
 import 'package:islamic_app/providers/login_provider.dart';
 import 'package:islamic_app/providers/profilerepository_provider.dart';
+import 'package:islamic_app/services/auth/login_or_register.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -238,7 +240,7 @@ class ProfileScreen extends ConsumerWidget {
                     thickness: 1,
                     color: Theme.of(context).colorScheme.primary,
                   ),
-                  // LOG OUT
+                  // D E L E T E  A C C O U N T
                   ListTile(
                     contentPadding: EdgeInsets.only(
                       left: 20,
@@ -265,7 +267,38 @@ class ProfileScreen extends ConsumerWidget {
                               ),
                             ),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                Navigator.of(context).pop();
+
+                                try {
+                                  await ref
+                                      .read(deleteProvider)
+                                      .deleteUser(profile.id);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                        "Account deleted successfully",
+                                      ),
+                                    ),
+                                  );
+                                  // Navigate to loginOrRegister and clear previous screens
+                                  Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                      builder: (_) => const LoginOrRegister(),
+                                    ),
+                                    (route) => false,
+                                  );
+                                } catch (e) {
+                                  print("Error: $e");
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        "Failed to delete account: $e",
+                                      ),
+                                    ),
+                                  );
+                                }
+                              },
                               child: Text(
                                 'Y E S',
                                 style: TextStyle(fontWeight: FontWeight.bold),
