@@ -35,7 +35,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     try {
       // call login through authProvider
       await ref.read(loginProvider.notifier).login(email, pin);
-      print('Login state: ${ref.read(loginProvider).isLoggedIn}');
       ref.refresh(profileProvider);
 
       ScaffoldMessenger.of(

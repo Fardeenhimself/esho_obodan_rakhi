@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:islamic_app/components/my_auth_text_field.dart';
 import 'package:islamic_app/components/my_button.dart';
+import 'package:islamic_app/providers/login_provider.dart';
 import 'package:islamic_app/providers/signup_provider.dart';
 import 'package:islamic_app/screens/login_screen.dart';
 
@@ -113,7 +114,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     );
 
     signupFuture
-        .then((res) {
+        .then((res) async {
           print('successfull');
           setState(() {
             isLoading = false;
@@ -121,10 +122,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(SnackBar(content: Text(res.message)));
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (_) => LoginScreen()),
-          );
+          await ref.read(loginProvider.notifier).login(email, pin);
         })
         .catchError((err) {
           print(err);
