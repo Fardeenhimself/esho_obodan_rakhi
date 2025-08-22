@@ -5,6 +5,7 @@ import 'package:islamic_app/screens/al_quran_screen.dart';
 import 'package:islamic_app/screens/ask_question_screen.dart';
 import 'package:islamic_app/screens/donation_screen.dart';
 import 'package:islamic_app/screens/events_screen.dart';
+import 'package:islamic_app/screens/fund_description_screen.dart';
 import 'package:islamic_app/screens/halaqa_screen.dart';
 import 'package:islamic_app/screens/mosques_screen.dart';
 
@@ -64,6 +65,6 @@ final List<Category> categories = [
     id: '7',
     title: 'ফান্ড',
     icon: Icons.campaign,
-    page: (ctx) => DonationScreen(),
+    page: (ctx) => FundDescriptionScreen(),
   ),
 ];

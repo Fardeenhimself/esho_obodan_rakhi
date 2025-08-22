@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic_app/screens/info_screen.dart';
 import 'package:islamic_app/screens/settings_screen.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -82,7 +83,10 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              //
+              Navigator.of(context).pop();
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (ctx) => InfoScreen()));
             },
           ),
         ],

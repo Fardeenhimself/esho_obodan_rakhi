@@ -2,16 +2,13 @@ import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:islamic_app/models/auth_model/user_profile.dart';
+import 'package:islamic_app/services/core/secure_storage_service.dart';
 
 class ProfileRepository {
   final String baseUrl = "https://halaqa.theabacuses.com/api";
 
-  static const _storage = FlutterSecureStorage(
-    aOptions: AndroidOptions(encryptedSharedPreferences: true),
-  );
-
   Future<UserProfile> fetchProfile() async {
-    final token = await _storage.read(key: 'auth_token');
+    final token = await SecureStorageService.read('auth_token');
 
     if (token == null) {
       throw Exception('No token found');

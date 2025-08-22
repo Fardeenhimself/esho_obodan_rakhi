@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islamic_app/components/data_container.dart';
 import 'package:islamic_app/components/my_drawer.dart';
+import 'package:islamic_app/screens/make_donation_screen.dart';
 
 class DonationScreen extends StatelessWidget {
   const DonationScreen({super.key});
@@ -24,7 +25,9 @@ class DonationScreen extends StatelessWidget {
         elevation: 6,
         splashColor: Theme.of(context).colorScheme.onTertiary,
         onPressed: () {
-          // navigate to donation collection form
+          Navigator.of(
+            context,
+          ).push(MaterialPageRoute(builder: (ctx) => MakeDonationScreen()));
         },
         label: Padding(
           padding: const EdgeInsets.all(8.0),
