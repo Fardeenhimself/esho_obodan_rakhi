@@ -34,10 +34,12 @@ class LoginNotifier extends StateNotifier<LoginState> {
   }
 }
 
-// Provider
+// Login repo provider
 final loginRepositoryProvider = Provider<LoginRepository>(
   (ref) => LoginRepository(),
 );
+
+// login provider
 final loginProvider = StateNotifierProvider<LoginNotifier, LoginState>(
   (ref) => LoginNotifier(ref.watch(loginRepositoryProvider)),
 );
