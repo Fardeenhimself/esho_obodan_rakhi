@@ -35,10 +35,12 @@ class ProfileScreen extends ConsumerWidget {
                       onPressed: () async {
                         try {
                           await ref.read(loginProvider.notifier).logout();
+                          ref.invalidate(profileProvider);
                           ScaffoldMessenger.of(context).clearSnackBars();
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text('Logout Successful')),
                           );
+                          Navigator.of(context).pop();
                         } catch (e) {
                           ScaffoldMessenger.of(context).clearSnackBars();
                           ScaffoldMessenger.of(context).showSnackBar(

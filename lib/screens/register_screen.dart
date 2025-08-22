@@ -41,7 +41,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     }
   }
 
-  void register() async {
+  // register function
+  void register(BuildContext context) async {
     final name = _nameController.text.trim();
     final email = _emailController.text.trim();
     final phone = _phoneController.text.trim();
@@ -201,7 +202,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
             // Login Button
             isLoading
                 ? const CircularProgressIndicator(color: Colors.white)
-                : MyButton(text: 'রেজিস্টার', onTap: register),
+                : MyButton(text: 'রেজিস্টার', onTap: () => register(context)),
             const SizedBox(height: 20),
             // Register Now
             Row(

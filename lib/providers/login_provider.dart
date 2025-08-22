@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:islamic_app/providers/profilerepository_provider.dart';
 import 'package:islamic_app/services/auth/login_repository.dart';
+import 'package:islamic_app/services/auth/logout_repository.dart';
 
 class LoginState {
   final bool isLoggedIn;
@@ -8,29 +10,44 @@ class LoginState {
   LoginState({required this.isLoggedIn, this.role});
 }
 
+// logout provider
+final logoutRepositoryProvider = Provider<LogoutRepository>(
+  (ref) => LogoutRepository(),
+);
+
+// login
 class LoginNotifier extends StateNotifier<LoginState> {
   final LoginRepository _repo;
+  final LogoutRepository _logoutRepo;
+  final Ref _ref;
 
-  LoginNotifier(this._repo) : super(LoginState(isLoggedIn: false)) {
+  LoginNotifier(this._repo, this._logoutRepo, this._ref)
+    : super(LoginState(isLoggedIn: false)) {
     _loadAuth();
   }
 
   Future<void> _loadAuth() async {
     final token = await _repo.getToken();
     final role = await _repo.getRole();
-    // final name = await _repo.getUserName();
-    // final email = await _repo.getUserEmail();
     state = LoginState(isLoggedIn: token != null, role: role);
   }
 
   Future<void> login(String email, String pin) async {
     final res = await _repo.login(email: email, pin: pin);
     state = LoginState(isLoggedIn: true, role: res.user.role);
+
+    // fetch profile for new user
+    _ref.refresh(profileProvider);
   }
 
   Future<void> logout() async {
-    await _repo.logout();
+    await _logoutRepo.logOut();
+
+    // resets the login state
     state = LoginState(isLoggedIn: false);
+
+    // invalidate the provider so that user data is cleared...
+    _ref.invalidate(profileProvider);
   }
 }
 
@@ -41,5 +58,9 @@ final loginRepositoryProvider = Provider<LoginRepository>(
 
 // login provider
 final loginProvider = StateNotifierProvider<LoginNotifier, LoginState>(
-  (ref) => LoginNotifier(ref.watch(loginRepositoryProvider)),
+  (ref) => LoginNotifier(
+    ref.watch(loginRepositoryProvider),
+    ref.watch(logoutRepositoryProvider),
+    ref,
+  ),
 );
