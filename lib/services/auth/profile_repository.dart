@@ -22,12 +22,8 @@ class ProfileRepository {
       headers: {"Authorization": "Bearer $token"},
     );
 
-    // Debug: print raw response
-    print("Profile API raw response: ${response.body}");
-
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      print("Decoded JSON: $json");
       return UserProfile.fromJson(data);
     } else {
       throw Exception('Failed to load profile: ${response.body}');
