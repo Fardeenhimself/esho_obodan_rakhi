@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic_app/models/dummy_models/mosques.dart';
 import 'package:islamic_app/screens/al_hadith_screen.dart';
 import 'package:islamic_app/screens/al_quran_screen.dart';
 import 'package:islamic_app/screens/ask_question_screen.dart';
@@ -57,7 +58,7 @@ final List<Category> categories = [
     id: '6',
     title: 'মসজিদ',
     icon: Icons.mosque_rounded,
-    page: (ctx) => MosquesScreen(),
+    page: (ctx) => MosquesScreen(mosques: dummyMosques),
   ),
   Category(
     id: '7',
