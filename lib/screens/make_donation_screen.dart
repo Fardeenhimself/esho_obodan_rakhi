@@ -32,8 +32,6 @@ class _MakeDonationScreenState extends ConsumerState<MakeDonationScreen> {
       ).showSnackBar(const SnackBar(content: Text("Invalid amount")));
       return;
     }
-
-    // Call provider; userId is handled inside the repository
     await ref
         .read(donationProvider.notifier)
         .donate(amount: amount, reason: _reasonController.text);

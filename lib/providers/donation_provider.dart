@@ -31,6 +31,11 @@ class DonationNotifier extends StateNotifier<DonationState> {
       state = state.copyWith(isLoading: false, error: e.toString());
     }
   }
+
+  /// Reset the provider state to default
+  void reset() {
+    state = DonationState(); // sets isLoading=false, error=null, success=false
+  }
 }
 
 final donationRepositoryProvider = Provider((ref) => DonationRepository());
