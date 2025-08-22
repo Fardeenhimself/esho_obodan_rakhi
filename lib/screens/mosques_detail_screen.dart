@@ -36,16 +36,39 @@ class MosquesDetailScreen extends StatelessWidget {
                         mosque.name,
                         style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           color: Theme.of(context).colorScheme.tertiary,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       const SizedBox(height: 12),
-                      Text(mosque.address),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.location_on,
+                            color: Theme.of(context).colorScheme.tertiary,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 10),
+                          Text(
+                            mosque.address,
+                            style: Theme.of(context).textTheme.titleMedium!
+                                .copyWith(
+                                  color: Theme.of(context).colorScheme.tertiary,
+                                ),
+                          ),
+                        ],
+                      ),
                       const SizedBox(height: 12),
                       Row(
                         children: [
-                          Icon(mosque.starIcon),
+                          Icon(mosque.starIcon, color: Colors.amber, size: 20),
                           const SizedBox(width: 6),
-                          Text(mosque.rating),
+                          Text(
+                            mosque.rating,
+                            style: Theme.of(context).textTheme.labelLarge!
+                                .copyWith(
+                                  color: Theme.of(context).colorScheme.tertiary,
+                                ),
+                          ),
                         ],
                       ),
                     ],

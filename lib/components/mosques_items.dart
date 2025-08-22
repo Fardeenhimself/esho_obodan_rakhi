@@ -16,7 +16,7 @@ class MosquesItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 8,
-      margin: EdgeInsets.all(8),
+      margin: EdgeInsets.only(left: 8, right: 8, top: 20, bottom: 20),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadiusGeometry.circular(8),
       ),
@@ -43,19 +43,29 @@ class MosquesItems extends StatelessWidget {
                   children: [
                     Text(
                       mosque.name,
-                      maxLines: 2,
                       textAlign: TextAlign.left,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        color: Colors.white,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     const SizedBox(height: 3),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text(mosque.address)],
+                      children: [
+                        Text(
+                          'রিভিউঃ ${mosque.rating}',
+                          style: Theme.of(context).textTheme.labelLarge!
+                              .copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                              ),
+                        ),
+                        const SizedBox(width: 6),
+                        Icon(mosque.starIcon, color: Colors.yellow, size: 20),
+                      ],
                     ),
                   ],
                 ),
