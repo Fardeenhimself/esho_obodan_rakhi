@@ -2,13 +2,10 @@ import 'dart:convert';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:islamic_app/models/auth_model/login_response.dart';
+import 'package:islamic_app/services/core/secure_storage_service.dart';
 
 class LoginRepository {
   final String baseUrl = "https://halaqa.theabacuses.com/api";
-
-  static const _storage = FlutterSecureStorage(
-    aOptions: AndroidOptions(encryptedSharedPreferences: true),
-  );
 
   Future<LoginResponse> login({
     required String email,
@@ -27,9 +24,9 @@ class LoginRepository {
       final res = LoginResponse.fromJson(json);
 
       // Save token and role
-      await _storage.write(key: "auth_token", value: res.token);
-      await _storage.write(key: "user_role", value: res.user.role);
-      await _storage.write(key: "user_email", value: email);
+      await SecureStorageService.write("auth_token", res.token);
+      await SecureStorageService.write("user_role", res.user.role);
+      await SecureStorageService.write("user_email", email);
 
       return res;
     } else {
@@ -37,10 +34,12 @@ class LoginRepository {
     }
   }
 
-  Future<String?> getToken() async => await _storage.read(key: "auth_token");
-  Future<String?> getRole() async => await _storage.read(key: "user_role");
+  Future<String?> getToken() async =>
+      await SecureStorageService.read("auth_token");
+  Future<String?> getRole() async =>
+      await SecureStorageService.read("user_role");
   Future<void> logout() async {
-    await _storage.delete(key: "auth_token");
-    await _storage.delete(key: "user_role");
+    await SecureStorageService.delete("auth_token");
+    await SecureStorageService.delete("user_role");
   }
 }

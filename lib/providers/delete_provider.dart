@@ -19,6 +19,7 @@ class DeleteService {
 
       // clear data
       ref.invalidate(profileProvider);
+      ref.invalidate(loginProvider);
     } else {
       throw Exception('Failed to delete user');
     }

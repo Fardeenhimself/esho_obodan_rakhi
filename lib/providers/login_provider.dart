@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:islamic_app/providers/profilerepository_provider.dart';
 import 'package:islamic_app/services/auth/login_repository.dart';
 import 'package:islamic_app/services/auth/logout_repository.dart';
+import 'package:islamic_app/services/core/secure_storage_service.dart';
 
 class LoginState {
   final bool isLoggedIn;
@@ -35,6 +36,7 @@ class LoginNotifier extends StateNotifier<LoginState> {
   Future<void> login(String email, String pin) async {
     final res = await _repo.login(email: email, pin: pin);
     state = LoginState(isLoggedIn: true, role: res.user.role);
+    print('LoginProvider: isLoggedIn=${state.isLoggedIn}, role=${state.role}');
 
     // fetch profile for new user
     _ref.refresh(profileProvider);
@@ -51,9 +53,13 @@ class LoginNotifier extends StateNotifier<LoginState> {
   }
 
   Future<void> clearLocalToken() async {
-    // Just clear the token locally, no API call
+    // Delete stored credentials
+    await SecureStorageService.delete("auth_token");
+    await SecureStorageService.delete("user_role");
+    await SecureStorageService.delete("user_email");
+
+    // Update login state
     state = LoginState(isLoggedIn: false);
-    // Also remove from secure storage if needed
   }
 }
 
