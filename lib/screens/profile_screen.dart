@@ -5,6 +5,7 @@ import 'package:islamic_app/components/my_dialog.dart';
 import 'package:islamic_app/providers/delete_provider.dart';
 import 'package:islamic_app/providers/login_provider.dart';
 import 'package:islamic_app/providers/profilerepository_provider.dart';
+import 'package:islamic_app/screens/user_donation_screen.dart';
 import 'package:islamic_app/services/auth/login_or_register.dart';
 
 class ProfileScreen extends ConsumerWidget {
@@ -199,7 +200,13 @@ class ProfileScreen extends ConsumerWidget {
                         shape: BeveledRectangleBorder(
                           borderRadius: BorderRadiusGeometry.circular(12),
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (ctx) => UserDonationScreen(),
+                            ),
+                          );
+                        },
                         title: Text('আপনার অনুদান'),
                         trailing: Icon(Icons.arrow_forward_ios_rounded),
                       ),
