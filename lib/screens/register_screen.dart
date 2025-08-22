@@ -4,10 +4,9 @@ import 'package:islamic_app/components/my_auth_text_field.dart';
 import 'package:islamic_app/components/my_button.dart';
 import 'package:islamic_app/providers/login_provider.dart';
 import 'package:islamic_app/providers/signup_provider.dart';
-import 'package:islamic_app/screens/login_screen.dart';
 
 class RegisterScreen extends ConsumerStatefulWidget {
-  RegisterScreen({super.key, required this.onTap});
+  const RegisterScreen({super.key, required this.onTap});
 
   final void Function()? onTap;
   @override

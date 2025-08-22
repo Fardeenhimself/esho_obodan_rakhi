@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic_app/components/data_container.dart';
 import 'package:islamic_app/components/my_drawer.dart';
 
 class DonationScreen extends StatelessWidget {
@@ -7,19 +8,35 @@ class DonationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('D O N A T I O N S'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              // Make a donation
-            },
-            icon: Icon(Icons.add, size: 30),
+      appBar: AppBar(title: Text('D O N A T I O N S')),
+      drawer: MyDrawer(),
+      body: Column(
+        children: [
+          // STATIC CONTAINER
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 22),
+            child: DataContainer(),
           ),
         ],
       ),
-      drawer: MyDrawer(),
-      body: Center(child: Text('DONATION SCREEN')),
+      floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        elevation: 6,
+        splashColor: Theme.of(context).colorScheme.onTertiary,
+        onPressed: () {
+          // navigate to donation collection form
+        },
+        label: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Become a donor',
+            style: Theme.of(context).textTheme.labelLarge!.copyWith(
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.tertiary,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
