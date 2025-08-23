@@ -52,7 +52,7 @@ A modern mobile application built with **Flutter** for Android and iOS, designed
 - **Networking:** HTTP package
 - **Local Storage:** flutter_secure_storage
 - **Backend:** REST API (Laravel)
-- **Database:** SQLite (for cart/wishlist in e-commerce modules)
+- **Database:** SQLite (for caching Quran)
 
 ---
 
