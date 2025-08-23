@@ -34,7 +34,7 @@ final List<Category> categories = [
     id: '2',
     title: 'হাদিস',
     icon: Icons.library_books,
-    page: (ctx) => const AlHadithScreen(),
+    page: (ctx) => AlHadithScreen(),
   ),
   Category(
     id: '3',
