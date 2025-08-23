@@ -11,7 +11,7 @@ class AlHadithScreen extends ConsumerWidget {
     final categoriesAsync = ref.watch(hadithCategoriesProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Hadith Categories')),
+      appBar: AppBar(title: const Text('হাদিস বিষয়শ্রেণী')),
       body: categoriesAsync.when(
         data: (categories) {
           return ListView.builder(
