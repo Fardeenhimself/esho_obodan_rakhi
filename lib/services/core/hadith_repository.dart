@@ -8,7 +8,7 @@ import 'package:islamic_app/models/core_models/single_hadith.dart';
 import 'package:islamic_app/services/core/secure_storage_service.dart';
 
 class HadithRepository {
-  final String baseUrl = 'https://hadeethenc.com/api/v1';
+  final String baseUrl = 'YOUR API KEY';
 
   // Lsit of C A T E G O R I E S
   Future<List<HadithCategory>> fetchCategories() async {
@@ -17,7 +17,7 @@ class HadithRepository {
     );
 
     if (response.statusCode == 200) {
-      final List data = json.decode(response.body); // API returns list directly
+      final List data = json.decode(response.body);
       return data.map((json) => HadithCategory.fromJson(json)).toList();
     } else {
       throw Exception('Failed to load categories');
@@ -65,7 +65,7 @@ class HadithRepository {
     if (token == null) throw Exception('No token found. Please login.');
 
     final response = await http.get(
-      Uri.parse('https://halaqa.theabacuses.com/api/hadith/single'),
+      Uri.parse('YOUR API KEY/single'),
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -75,7 +75,6 @@ class HadithRepository {
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      // API might wrap it in "data" or send directly
       final hadithJson = data['data'] ?? data;
       return RandomHadith.fromJson(hadithJson);
     } else if (response.statusCode == 401) {
