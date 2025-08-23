@@ -42,7 +42,7 @@ class DonationRepository {
   }
 
   // G E T  U S E R  D O N A T I O N
-  Future<Map<String, dynamic>> getUserDonation() async {
+  Future<List<Map<String, dynamic>>> getUserDonation() async {
     final token = await SecureStorageService.read("auth_token");
     final userId = await SecureStorageService.read("user_id");
 
@@ -58,15 +58,11 @@ class DonationRepository {
       },
     );
 
-    print("📦 Response Body: ${response.body}");
+    print("response Body: ${response.body}");
 
     if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      if (data is Map<String, dynamic>) {
-        return data;
-      } else {
-        return {}; // no donation exists
-      }
+      final List<dynamic> data = jsonDecode(response.body);
+      return data.map((e) => e as Map<String, dynamic>).toList();
     } else {
       throw Exception("Failed to fetch donation: ${response.body}");
     }

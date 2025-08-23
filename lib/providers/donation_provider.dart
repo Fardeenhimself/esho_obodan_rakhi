@@ -45,7 +45,9 @@ final donationProvider = StateNotifierProvider<DonationNotifier, DonationState>(
   },
 );
 
-final userDonationProvider = FutureProvider<Map<String, dynamic>>((ref) async {
+final userDonationProvider = FutureProvider<List<Map<String, dynamic>>>((
+  ref,
+) async {
   final repo = ref.read(donationRepositoryProvider);
   return repo.getUserDonation();
 });

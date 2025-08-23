@@ -7,30 +7,26 @@ class UserDonationScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final donationAsync = ref.watch(userDonationProvider);
+    final donationsAsync = ref.watch(userDonationProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("My Donation")),
-      body: donationAsync.when(
-        data: (donation) {
-          if (donation == null || donation.isEmpty) {
+      appBar: AppBar(title: const Text("My Donations")),
+      body: donationsAsync.when(
+        data: (donations) {
+          if (donations.isEmpty) {
             return const Center(child: Text("No donations yet."));
           }
-
-          return Padding(
-            padding: const EdgeInsets.all(16),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              elevation: 3,
-              child: ListTile(
+          return ListView.builder(
+            itemCount: donations.length,
+            itemBuilder: (context, index) {
+              final donation = donations[index];
+              return ListTile(
                 leading: const Icon(Icons.favorite, color: Colors.red),
                 title: Text("৳ ${donation['amount']}"),
                 subtitle: Text(donation['reason'] ?? "No reason"),
                 trailing: Text(donation['created_at'] ?? ""),
-              ),
-            ),
+              );
+            },
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
