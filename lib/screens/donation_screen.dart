@@ -182,7 +182,8 @@ class DonationScreen extends ConsumerWidget {
                                             amount: amount,
                                             reason: _reasonController.text,
                                           );
-
+                                      // refresh the ui for new donation
+                                      ref.refresh(userDonationProvider);
                                       // success ? navigate -> successpage
                                       if (ref.read(donationProvider).success) {
                                         Navigator.of(
