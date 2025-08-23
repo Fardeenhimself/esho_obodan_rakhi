@@ -22,15 +22,50 @@ class AlHadithSubcategoryScreen extends ConsumerWidget {
             itemCount: hadiths.length,
             itemBuilder: (context, index) {
               final subCat = hadiths[index];
-              return ListTile(
-                title: Text(subCat.title),
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (ctx) => SingleHadithScreen(hadithId: subCat.id),
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 5,
+                  vertical: 10,
+                ),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) =>
+                            SingleHadithScreen(hadithId: subCat.id),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Theme.of(context).colorScheme.primaryContainer
+                          .withAlpha((0.5 * 255).round()),
                     ),
-                  );
-                },
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Row(
+                        children: [
+                          Icon(Icons.info),
+                          const SizedBox(width: 5),
+                          Expanded(
+                            child: Text(
+                              subCat.title,
+                              style: Theme.of(context).textTheme.bodyLarge!
+                                  .copyWith(
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.onPrimaryContainer,
+                                    fontWeight: FontWeight.w600,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               );
             },
           );

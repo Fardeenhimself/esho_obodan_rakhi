@@ -15,28 +15,56 @@ class SingleHadithScreen extends ConsumerWidget {
       appBar: AppBar(title: const Text(' হাদিস ব্যাখ্যা')),
       body: singleHadithAsync.when(
         data: (hadith) {
-          return ListView(
-            children: [
-              Text(
-                hadith.title,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+          return Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: ListView(
+              children: [
+                Text(
+                  hadith.title,
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              Text(hadith.hadeeth, style: const TextStyle(fontSize: 16)),
-              const SizedBox(height: 10),
-              Text('Attribution: ${hadith.attribution}'),
-              Text('Grade: ${hadith.grade}'),
-              const SizedBox(height: 10),
-              Text(
-                'Explanation:',
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              Text(hadith.explanation),
-              const SizedBox(height: 10),
-            ],
+                const SizedBox(height: 10),
+                Text(
+                  hadith.hadeeth,
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'রেফারেন্সঃ ${hadith.attribution}',
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  'গ্রেডঃ ${hadith.grade}',
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  'ব্যাখ্যাঃ',
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  hadith.explanation,
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+                ),
+                const SizedBox(height: 10),
+              ],
+            ),
           );
         },
         loading: () => Center(child: CupertinoActivityIndicator()),
