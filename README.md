@@ -35,16 +35,18 @@ A heartfull thanks to **Mazharul Islam** for helping developing the backend. Bar
 
 ## Screenshots
 
-![Log In](assets/ss/login.png)
-![Register](assets/ss/register.png)
-![Home Screen](assets/ss/home.png)
-![Al Quran](assets/ss/quran.png)
-![Al Quran Filter](assets/ss/quranSetting.png)
-![Al Hadith](assets/ss/hadith.png)
-![Donation](assets/ss/donation.png)
-![Track Donation](assets/ss/userdonation.png)
-![Profile Screen](assets/ss/profilecng.png)
-![Theme toggle](assets/ss/darrk.png)
+<p float="left">
+  <img src="assets/ss/login.png" width="45%" /> 
+  <img src="assets/ss/register.png" width="45%" /> 
+  <img src="assets/ss/home.png" width="45%" />
+  <img src="assets/ss/quran.png" width="45%" /> 
+  <img src="assets/ss/loginSetting.png" width="45%" /> 
+  <img src="assets/ss/hadith.png" width="45%" /> 
+  <img src="assets/ss/donation.png" width="45%" /> 
+  <img src="assets/ss/userdonation.png" width="45%" /> 
+  <img src="assets/ss/profilecng.png" width="45%" /> 
+  <img src="assets/ss/darrk.png" width="45%" /> 
+</p>
 
 ---
 
