@@ -8,7 +8,7 @@ class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Theme.of(context).colorScheme.primary,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -18,7 +18,7 @@ class MyDrawer extends StatelessWidget {
                 child: Icon(
                   Icons.mosque,
                   size: 40,
-                  color: Theme.of(context).colorScheme.onPrimary,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
               ListTile(
@@ -28,12 +28,12 @@ class MyDrawer extends StatelessWidget {
                 ),
                 leading: Icon(
                   Icons.home_filled,
-                  color: Theme.of(context).colorScheme.onPrimary,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
                 title: Text(
                   'H O M E',
                   style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
                 onTap: () {
@@ -47,12 +47,12 @@ class MyDrawer extends StatelessWidget {
                 ),
                 leading: Icon(
                   Icons.settings,
-                  color: Theme.of(context).colorScheme.onPrimary,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
                 title: Text(
                   'S E T T I N G S',
                   style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
                 onTap: () {
@@ -68,18 +68,18 @@ class MyDrawer extends StatelessWidget {
             contentPadding: EdgeInsets.only(left: 12, bottom: 15),
             leading: Icon(
               Icons.volunteer_activism,
-              color: Theme.of(context).colorScheme.onPrimary,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
             title: Text(
               'D O N A T E',
               style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: Theme.of(context).colorScheme.onPrimary,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
             subtitle: Text(
               'Help us keep the app add free',
               style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                color: Theme.of(context).colorScheme.onPrimary,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
             onTap: () {

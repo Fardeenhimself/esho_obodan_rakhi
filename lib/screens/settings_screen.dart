@@ -15,21 +15,47 @@ class SettingsScreen extends ConsumerWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: ListTile(
-              title: Text('ডার্ক মোড'),
-              trailing: CupertinoSwitch(
-                value: currentThemeMode == ThemeMode.dark,
-                onChanged: (isDark) {
-                  ref.read(themeProvider.notifier).toggleTheme();
-                },
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: Theme.of(
+                  context,
+                ).colorScheme.primaryContainer.withAlpha((0.3 * 255).round()),
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ListTile(
-              title: Text('নোটিফিকেশন'),
-              trailing: CupertinoSwitch(value: false, onChanged: (value) {}),
+              child: Column(
+                children: [
+                  ListTile(
+                    title: Text('ডার্ক মোড'),
+                    titleTextStyle: Theme.of(context).textTheme.titleMedium!
+                        .copyWith(
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onPrimaryContainer,
+                          fontWeight: FontWeight.bold,
+                        ),
+                    trailing: CupertinoSwitch(
+                      value: currentThemeMode == ThemeMode.dark,
+                      onChanged: (isDark) {
+                        ref.read(themeProvider.notifier).toggleTheme();
+                      },
+                    ),
+                  ),
+                  ListTile(
+                    title: Text('নোটিফিকেশন'),
+                    titleTextStyle: Theme.of(context).textTheme.titleMedium!
+                        .copyWith(
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onPrimaryContainer,
+                          fontWeight: FontWeight.bold,
+                        ),
+                    trailing: CupertinoSwitch(
+                      value: false,
+                      onChanged: (value) {},
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
