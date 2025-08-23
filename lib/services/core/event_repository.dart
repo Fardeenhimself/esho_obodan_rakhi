@@ -4,7 +4,7 @@ import 'package:islamic_app/models/core_models/event.dart';
 import 'package:islamic_app/services/core/secure_storage_service.dart';
 
 class EventRepository {
-  static const baseUrl = 'https://halaqa.theabacuses.com/api/event';
+  static const baseUrl = 'YOUR API KEY';
 
   // Fetch list of events
   Future<List<Event>> fetchEvents() async {

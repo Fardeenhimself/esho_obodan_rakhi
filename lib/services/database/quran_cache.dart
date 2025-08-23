@@ -96,8 +96,7 @@ class QuranCacheRepo {
   // SURAH WITH SELECTED LANGUAGE
   Future<SurahDetail?> getSurahDetail(int surahId, String lang) async {
     final db = await QuranDb.instance;
-
-    // Fetch surah header + selected lang translation if any
+    
     final header = await db.rawQuery(
       '''
       SELECT s.id, s.name, s.transliteration, s.type, s.total_verses,
@@ -112,8 +111,6 @@ class QuranCacheRepo {
     );
 
     if (header.isEmpty) return null;
-
-    // Fetch verses (arabic + selected lang translation if any)
     final rows = await db.rawQuery(
       '''
       SELECT v.verse_id, v.arabic_text, vt.translation
