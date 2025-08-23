@@ -10,7 +10,16 @@ class FaqScreen extends ConsumerWidget {
     final faqAsync = ref.watch(faqProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("FAQs")),
+      appBar: AppBar(
+        title: const Text(
+          "প্রশ্ন উত্তর",
+          style: TextStyle(
+            fontFamily: 'bangla',
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       body: faqAsync.when(
         data: (faqs) {
           if (faqs.isEmpty) {
@@ -21,11 +30,25 @@ class FaqScreen extends ConsumerWidget {
             itemBuilder: (context, index) {
               final faq = faqs[index];
               return ExpansionTile(
-                title: Text(faq.question),
+                title: Text(
+                  faq.question,
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: Text(faq.answer),
+                    child: Text(
+                      faq.answer,
+                      style: TextStyle(
+                        fontFamily: 'bangla',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
                   ),
                 ],
               );

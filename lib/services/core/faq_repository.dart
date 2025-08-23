@@ -28,7 +28,6 @@ class FaqRepository {
       if (data['data'] != null) {
         return (data['data'] as List).map((e) => Faq.fromJson(e)).toList();
       }
-      print('data recieved: $data');
       return [];
     } else if (response.statusCode == 401) {
       throw Exception('Unauthorized: Please login again.');

@@ -209,7 +209,16 @@ class DonationScreen extends ConsumerWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text("D O N A T I O N S")),
+      appBar: AppBar(
+        title: const Text(
+          "অনুদান সমুহ",
+          style: TextStyle(
+            fontFamily: 'bangla',
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       drawer: MyDrawer(),
       body: Column(
         children: [

@@ -2,24 +2,24 @@ class Event {
   final int id;
   final String title;
   final String description;
-  final DateTime startDate;
-  final DateTime endDate;
+  final String location;
+  final String eventDate;
 
   Event({
     required this.id,
     required this.title,
     required this.description,
-    required this.startDate,
-    required this.endDate,
+    required this.location,
+    required this.eventDate,
   });
 
   factory Event.fromJson(Map<String, dynamic> json) {
     return Event(
-      id: json['id'] as int,
-      title: json['title'] as String,
-      description: json['description'] as String,
-      startDate: DateTime.parse(json['start_date'] as String),
-      endDate: DateTime.parse(json['end_date'] as String),
+      id: int.tryParse(json['id'].toString()) ?? 0,
+      title: json['title']?.toString() ?? '',
+      description: json['description']?.toString() ?? '',
+      location: json['location']?.toString() ?? '',
+      eventDate: json['event_date']?.toString() ?? '',
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:islamic_app/components/my_drawer.dart';
 import 'package:islamic_app/providers/event_provider.dart';
+import 'package:islamic_app/screens/event_details_screen.dart';
 
 class EventsScreen extends ConsumerWidget {
   const EventsScreen({super.key});
@@ -10,7 +12,17 @@ class EventsScreen extends ConsumerWidget {
     final eventsAsync = ref.watch(eventsProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Events')),
+      appBar: AppBar(
+        title: const Text(
+          'অনুষ্ঠান সমুহ',
+          style: TextStyle(
+            fontFamily: 'bangla',
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      drawer: MyDrawer(),
       body: eventsAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (err, stack) => Center(child: Text('Error: $err')),
@@ -24,7 +36,14 @@ class EventsScreen extends ConsumerWidget {
               final event = events[index];
               return ListTile(
                 title: Text(event.title),
-                subtitle: Text(event.endDate.toString()),
+                subtitle: Text(event.eventDate),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (ctx) => EventDetailScreen(eventId: event.id),
+                    ),
+                  );
+                },
               );
             },
           );
