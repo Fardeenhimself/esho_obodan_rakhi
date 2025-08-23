@@ -10,11 +10,21 @@ class UserDonationScreen extends ConsumerWidget {
     final donationsAsync = ref.watch(userDonationProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("My Donations")),
+      appBar: AppBar(
+        title: const Text(
+          "আমার অনুদান সমূহ",
+          style: TextStyle(fontFamily: 'bangla', fontSize: 24),
+        ),
+      ),
       body: donationsAsync.when(
         data: (donations) {
           if (donations.isEmpty) {
-            return const Center(child: Text("No donations yet."));
+            return const Center(
+              child: Text(
+                "এখনো কোন অনুদান হয়নি.",
+                style: TextStyle(fontFamily: 'bangla', fontSize: 18),
+              ),
+            );
           }
           return ListView.builder(
             itemCount: donations.length,
@@ -22,9 +32,30 @@ class UserDonationScreen extends ConsumerWidget {
               final donation = donations[index];
               return ListTile(
                 leading: const Icon(Icons.favorite, color: Colors.red),
-                title: Text("৳ ${donation['amount']}"),
-                subtitle: Text(donation['reason'] ?? "No reason"),
-                trailing: Text(donation['created_at'] ?? ""),
+                title: Text(
+                  "৳ ${donation['amount']}",
+                  style: TextStyle(
+                    fontFamily: 'inter',
+                    fontSize: 16,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+                ),
+                subtitle: Text(
+                  "কারনঃ ${donation['reason']}",
+                  style: TextStyle(
+                    fontFamily: 'inter',
+                    fontSize: 14,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+                ),
+                trailing: Text(
+                  donation['created_at'] ?? "",
+                  style: TextStyle(
+                    fontFamily: 'inter',
+                    fontSize: 14,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+                ),
               );
             },
           );

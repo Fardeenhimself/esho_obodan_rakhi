@@ -20,7 +20,9 @@ class MyButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+            style: TextStyle(
+              fontFamily: 'bangla',
+              fontSize: 18,
               color: Colors.white,
               fontWeight: FontWeight.bold,
               letterSpacing: 1,

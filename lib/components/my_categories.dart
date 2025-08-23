@@ -24,7 +24,9 @@ class MyCategories extends StatelessWidget {
               categoryItems.title,
               maxLines: 2,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.labelLarge!.copyWith(
+              style: TextStyle(
+                fontFamily: 'bangla',
+                fontSize: 16,
                 color: Theme.of(context).colorScheme.secondary,
                 overflow: TextOverflow.ellipsis,
                 fontWeight: FontWeight.bold,

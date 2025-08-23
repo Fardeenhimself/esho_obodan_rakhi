@@ -15,7 +15,12 @@ class AlHadithSubcategoryScreen extends ConsumerWidget {
     final subCategoryAsync = ref.watch(hadithSubCategoryProvider(category.id));
 
     return Scaffold(
-      appBar: AppBar(title: Text(category.title)),
+      appBar: AppBar(
+        title: Text(
+          category.title,
+          style: TextStyle(fontFamily: 'bangla', fontSize: 24),
+        ),
+      ),
       body: subCategoryAsync.when(
         data: (hadiths) {
           return ListView.builder(
@@ -51,14 +56,15 @@ class AlHadithSubcategoryScreen extends ConsumerWidget {
                           Expanded(
                             child: Text(
                               subCat.title,
-                              style: Theme.of(context).textTheme.bodyLarge!
-                                  .copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).colorScheme.onPrimaryContainer,
-                                    fontWeight: FontWeight.w600,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+                              style: TextStyle(
+                                fontFamily: 'bangla',
+                                fontSize: 16,
+                                color: Theme.of(
+                                  context,
+                                ).colorScheme.onPrimaryContainer,
+                                fontWeight: FontWeight.w600,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
                           ),
                         ],

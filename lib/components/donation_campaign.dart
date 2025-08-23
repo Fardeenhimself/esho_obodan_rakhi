@@ -30,16 +30,24 @@ class DonationCampaign extends StatelessWidget {
               children: [
                 Text(
                   category.name,
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 22,
                     color: Theme.of(context).colorScheme.inverseSurface,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.5,
                   ),
                 ),
                 Divider(color: Theme.of(context).colorScheme.inverseSurface),
-                Text('তারিখঃ  $formatDate'),
+                Text(
+                  'তারিখঃ  $formatDate',
+                  style: TextStyle(fontFamily: 'bangla', fontSize: 16),
+                ),
                 const SizedBox(height: 9),
-                Text('মোট অর্থ সংগ্রহঃ'),
+                Text(
+                  'মোট অর্থ সংগ্রহঃ',
+                  style: TextStyle(fontFamily: 'bangla', fontSize: 16),
+                ),
               ],
             ),
           ),

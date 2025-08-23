@@ -33,7 +33,9 @@ class ProfileScreen extends ConsumerWidget {
               Text(
                 'আপনার প্রোফাইল নাম চেঞ্জ করুন',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                style: TextStyle(
+                  fontFamily: 'bangla',
+                  fontSize: 16,
                   color: Theme.of(context).colorScheme.tertiary,
                   fontWeight: FontWeight.bold,
                 ),
@@ -47,7 +49,9 @@ class ProfileScreen extends ConsumerWidget {
                 controller: _nameController,
                 decoration: InputDecoration(
                   labelText: "নাম",
-                  labelStyle: Theme.of(context).textTheme.labelLarge!.copyWith(
+                  labelStyle: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 18,
                     color: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),
@@ -61,7 +65,9 @@ class ProfileScreen extends ConsumerWidget {
                 controller: _phoneController,
                 decoration: InputDecoration(
                   labelText: "ফোন",
-                  labelStyle: Theme.of(context).textTheme.labelLarge!.copyWith(
+                  labelStyle: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 18,
                     color: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),
@@ -98,18 +104,38 @@ class ProfileScreen extends ConsumerWidget {
 
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                  content: Text('প্রোফাইল ইডিট সফল হয়েছে'),
+                                  content: Text(
+                                    'প্রোফাইল ইডিট সফল হয়েছে',
+                                    style: TextStyle(
+                                      fontFamily: 'bangla',
+                                      fontSize: 16,
+                                    ),
+                                  ),
                                 ),
                               );
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text('Update failed: $e')),
+                                SnackBar(
+                                  content: Text(
+                                    'সফল হয় নি',
+                                    style: TextStyle(
+                                      fontFamily: 'bangla',
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
                               );
                             }
                           },
                     child: editState.isLoading
                         ? CircularProgressIndicator(color: Colors.white)
-                        : Text("সেভ"),
+                        : Text(
+                            "সেভ",
+                            style: TextStyle(
+                              fontFamily: 'bangla',
+                              fontSize: 16,
+                            ),
+                          ),
                   );
                 },
               ),
@@ -122,7 +148,14 @@ class ProfileScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('আপনার প্রোফাইল'),
+        title: Text(
+          'আপনার প্রোফাইল',
+          style: TextStyle(
+            fontFamily: 'bangla',
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
         actions: [
           IconButton(
@@ -131,13 +164,13 @@ class ProfileScreen extends ConsumerWidget {
               showDialog(
                 context: context,
                 builder: (ctx) => MyDialog(
-                  title: 'L O G  O U T',
-                  content: 'Are you sure you want to log out?',
+                  title: 'লগ আউট করুন',
+                  content: 'আপনি কি লগ আউট করতে চান?',
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.of(context).pop(),
                       child: Text(
-                        'N O',
+                        'না',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -150,18 +183,18 @@ class ProfileScreen extends ConsumerWidget {
                           ref.refresh(profileProvider);
 
                           ScaffoldMessenger.of(context).clearSnackBars();
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Logout Successful')),
-                          );
+                          ScaffoldMessenger.of(
+                            context,
+                          ).showSnackBar(SnackBar(content: Text('লগ আউট সফল')));
                           Navigator.of(context).pop();
                         } catch (e) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Logout failed: $e')),
+                            SnackBar(content: Text('লগ আউট হয়নি')),
                           );
                         }
                       },
                       child: Text(
-                        'Y E S',
+                        'হ্যাঁ',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -200,7 +233,9 @@ class ProfileScreen extends ConsumerWidget {
                       SizedBox(height: 10),
                       Text(
                         profile.name,
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        style: TextStyle(
+                          fontFamily: 'inter',
+                          fontSize: 20,
                           color: Theme.of(
                             context,
                           ).colorScheme.onPrimaryContainer,
@@ -221,13 +256,13 @@ class ProfileScreen extends ConsumerWidget {
                           SizedBox(width: 4),
                           Text(
                             profile.email,
-                            style: Theme.of(context).textTheme.labelMedium!
-                                .copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).colorScheme.onPrimaryContainer,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                            style: TextStyle(
+                              fontFamily: 'inter',
+                              color: Theme.of(
+                                context,
+                              ).colorScheme.onPrimaryContainer,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ],
                       ),
@@ -245,13 +280,13 @@ class ProfileScreen extends ConsumerWidget {
                           SizedBox(width: 4),
                           Text(
                             profile.phone,
-                            style: Theme.of(context).textTheme.labelMedium!
-                                .copyWith(
-                                  color: Theme.of(
-                                    context,
-                                  ).colorScheme.onPrimaryContainer,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                            style: TextStyle(
+                              fontFamily: 'inter',
+                              color: Theme.of(
+                                context,
+                              ).colorScheme.onPrimaryContainer,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ],
                       ),
@@ -270,13 +305,11 @@ class ProfileScreen extends ConsumerWidget {
                           children: [
                             Text(
                               'ইডিট করুন',
-                              style: Theme.of(context).textTheme.labelMedium!
-                                  .copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).colorScheme.onPrimary,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              style: TextStyle(
+                                fontFamily: 'bangla',
+                                color: Theme.of(context).colorScheme.onPrimary,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                             SizedBox(width: 6),
                             Icon(
@@ -312,6 +345,11 @@ class ProfileScreen extends ConsumerWidget {
                         MaterialPageRoute(builder: (_) => UserDonationScreen()),
                       ),
                       title: Text('আপনার অনুদান'),
+                      titleTextStyle: TextStyle(
+                        fontFamily: 'bangla',
+                        fontSize: 18,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
                       trailing: Icon(Icons.arrow_forward_ios_rounded),
                     ),
                     ListTile(
@@ -321,6 +359,11 @@ class ProfileScreen extends ConsumerWidget {
                       ),
                       onTap: () {},
                       title: Text('আপনার অনুষ্ঠান'),
+                      titleTextStyle: TextStyle(
+                        fontFamily: 'bangla',
+                        fontSize: 18,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
                       trailing: Icon(Icons.arrow_forward_ios_rounded),
                     ),
                     ListTile(
@@ -330,6 +373,11 @@ class ProfileScreen extends ConsumerWidget {
                       ),
                       onTap: () {},
                       title: Text('কৃতিত্ব সমূহ'),
+                      titleTextStyle: TextStyle(
+                        fontFamily: 'bangla',
+                        fontSize: 18,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
                       trailing: Icon(Icons.arrow_forward_ios_rounded),
                     ),
                     Divider(
@@ -347,14 +395,13 @@ class ProfileScreen extends ConsumerWidget {
                         showDialog(
                           context: context,
                           builder: (_) => MyDialog(
-                            title: 'Delete Account',
-                            content:
-                                'Are you sure you want to delete your account?',
+                            title: 'ডিলিট এ্যাকাউন্ট',
+                            content: 'আপনি আপনার এ্যাকাউন্ট ডিলিট করতে চান?',
                             actions: [
                               TextButton(
                                 onPressed: () => Navigator.of(context).pop(),
                                 child: Text(
-                                  'N O',
+                                  'না',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -367,9 +414,7 @@ class ProfileScreen extends ConsumerWidget {
                                         .deleteUser(profile.id);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
-                                        content: Text(
-                                          "Account deleted successfully",
-                                        ),
+                                        content: Text("ডিলিট সফল"),
                                       ),
                                     );
                                     Navigator.of(context).pushAndRemoveUntil(
@@ -380,16 +425,12 @@ class ProfileScreen extends ConsumerWidget {
                                     );
                                   } catch (e) {
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          "Failed to delete account: $e",
-                                        ),
-                                      ),
+                                      SnackBar(content: Text("সফল হয়নি")),
                                     );
                                   }
                                 },
                                 child: Text(
-                                  'Y E S',
+                                  'হ্যাঁ',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -397,12 +438,11 @@ class ProfileScreen extends ConsumerWidget {
                           ),
                         );
                       },
-                      title: Text(
-                        'ডিলিট একাউন্ট',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.error,
-                        ),
+                      title: Text('ডিলিট একাউন্ট'),
+                      titleTextStyle: TextStyle(
+                        fontFamily: 'bangla',
+                        fontSize: 18,
+                        color: Theme.of(context).colorScheme.error,
                       ),
                       trailing: Icon(
                         Icons.delete_forever,

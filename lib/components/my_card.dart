@@ -23,7 +23,9 @@ class MyCard extends StatelessWidget {
             children: [
               Text(
                 message,
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                style: TextStyle(
+                  fontFamily: 'bangla',
+                  fontSize: 18,
                   color: Theme.of(context).colorScheme.onSecondaryContainer,
                   fontWeight: FontWeight.bold,
                 ),
@@ -33,7 +35,9 @@ class MyCard extends StatelessWidget {
               const SizedBox(height: 6),
               Text(
                 msgInfo,
-                style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                style: TextStyle(
+                  fontFamily: 'bangla',
+                  fontSize: 16,
                   color: Theme.of(context).colorScheme.onSecondaryContainer,
                 ),
               ),

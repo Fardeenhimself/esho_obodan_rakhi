@@ -10,7 +10,12 @@ class SettingsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentThemeMode = ref.watch(themeProvider);
     return Scaffold(
-      appBar: AppBar(title: Text('এ্যাপ্স সেটিংস')),
+      appBar: AppBar(
+        title: Text(
+          'এ্যাপ্স সেটিংস',
+          style: TextStyle(fontFamily: 'bangla', fontSize: 24),
+        ),
+      ),
       body: ListView(
         children: [
           Padding(
@@ -26,13 +31,12 @@ class SettingsScreen extends ConsumerWidget {
                 children: [
                   ListTile(
                     title: Text('ডার্ক মোড'),
-                    titleTextStyle: Theme.of(context).textTheme.titleMedium!
-                        .copyWith(
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.onPrimaryContainer,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    titleTextStyle: TextStyle(
+                      fontFamily: 'bangla',
+                      fontSize: 18,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      fontWeight: FontWeight.bold,
+                    ),
                     trailing: CupertinoSwitch(
                       value: currentThemeMode == ThemeMode.dark,
                       onChanged: (isDark) {
@@ -42,13 +46,12 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                   ListTile(
                     title: Text('নোটিফিকেশন'),
-                    titleTextStyle: Theme.of(context).textTheme.titleMedium!
-                        .copyWith(
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.onPrimaryContainer,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    titleTextStyle: TextStyle(
+                      fontFamily: 'bangla',
+                      fontSize: 18,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      fontWeight: FontWeight.bold,
+                    ),
                     trailing: CupertinoSwitch(
                       value: false,
                       onChanged: (value) {},

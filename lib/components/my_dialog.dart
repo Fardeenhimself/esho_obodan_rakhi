@@ -21,14 +21,18 @@ class MyDialog extends StatelessWidget {
       ),
       title: Text(
         title,
-        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+        style: TextStyle(
+          fontFamily: 'bangla',
+          fontSize: 22,
           color: Theme.of(context).colorScheme.onPrimaryContainer,
           fontWeight: FontWeight.bold,
         ),
       ),
       content: Text(
         content,
-        style: Theme.of(context).textTheme.titleMedium!.copyWith(
+        style: TextStyle(
+          fontFamily: 'bangla',
+          fontSize: 20,
           color: Theme.of(context).colorScheme.onPrimaryContainer,
         ),
       ),

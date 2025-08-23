@@ -35,7 +35,9 @@ class _MainPageState extends State<MainPage> {
       body: _screens[_initialIndex],
       bottomNavigationBar: NavigationBar(
         labelTextStyle: WidgetStatePropertyAll(
-          Theme.of(context).textTheme.labelLarge!.copyWith(
+          TextStyle(
+            fontFamily: 'bangla',
+            fontSize: 16,
             color: Theme.of(context).colorScheme.secondary,
             fontWeight: FontWeight.bold,
           ),

@@ -9,7 +9,12 @@ class MosquesDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(mosque.name)),
+      appBar: AppBar(
+        title: Text(
+          mosque.name,
+          style: TextStyle(fontFamily: 'bangla', fontSize: 24),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16.0),
@@ -34,7 +39,9 @@ class MosquesDetailScreen extends StatelessWidget {
                     children: [
                       Text(
                         mosque.name,
-                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                        style: TextStyle(
+                          fontFamily: 'bangla',
+                          fontSize: 22,
                           color: Theme.of(context).colorScheme.tertiary,
                           fontWeight: FontWeight.bold,
                         ),
@@ -50,10 +57,11 @@ class MosquesDetailScreen extends StatelessWidget {
                           const SizedBox(width: 10),
                           Text(
                             mosque.address,
-                            style: Theme.of(context).textTheme.titleMedium!
-                                .copyWith(
-                                  color: Theme.of(context).colorScheme.tertiary,
-                                ),
+                            style: TextStyle(
+                              fontFamily: 'bangla',
+                              fontSize: 18,
+                              color: Theme.of(context).colorScheme.tertiary,
+                            ),
                           ),
                         ],
                       ),

@@ -49,6 +49,7 @@ class InfoScreen extends ConsumerWidget {
                     Text(
                       'মুহতারাম/মুহতারমা,',
                       style: TextStyle(
+                        fontFamily: 'bangla',
                         fontSize: fontSize.toDouble(),
                         color: Theme.of(context).colorScheme.onSurface,
                         fontWeight: FontWeight.bold,
@@ -58,6 +59,7 @@ class InfoScreen extends ConsumerWidget {
                     Text(
                       'আসসালামু আলাইকুম ওয়া রহমাতুল্লাহ',
                       style: TextStyle(
+                        fontFamily: 'bangla',
                         fontSize: fontSize.toDouble(),
                         color: Theme.of(context).colorScheme.onSurface,
                       ),
@@ -66,6 +68,7 @@ class InfoScreen extends ConsumerWidget {
                     Text(
                       'বর্তমান যুগ ফেতনার যুগ। মিডিয়া বা প্রযুক্তির অপব্যবহার বেড়েই চলেছে। দ্বীনের পোশাক পরিধান করে বহুজন বদদ্বীনি কাজে লিপ্ত। সকল দিকে লক্ষ্য রেখে মিডিয়ার বা প্রযুক্তির সহীহ ব্যবহারের ফল আমাদের এ্যাপ্স। উলামায়ে কেরাম এর চিন্তা চেতনা "গুনাহ থেকে বাঁচা"। আমাদের এই এ্যাপ্স একই ধারণায় তৈরি। তাই কোন প্রকার বিজ্ঞাপন ছাড়া বিনামূল্যে সকলের খেদমতে আমাদের এই এ্যাপ।',
                       style: TextStyle(
+                        fontFamily: 'bangla',
                         fontSize: fontSize.toDouble(),
                         color: Theme.of(context).colorScheme.onSurface,
                       ),
@@ -74,6 +77,7 @@ class InfoScreen extends ConsumerWidget {
                     Text(
                       'আমাদের এই এ্যাপ্সটি যদি আপনাদের কাছে ভালো লেগে থাকে তবে আমাদের কে আপনাদের দোওায় রাখিবেন। সাথে আপনাদের কাছে নিকট দুয়া ও সহযোগীতার আবেদন।,',
                       style: TextStyle(
+                        fontFamily: 'bangla',
                         fontSize: fontSize.toDouble(),
                         color: Theme.of(context).colorScheme.onSurface,
                       ),
@@ -82,6 +86,7 @@ class InfoScreen extends ConsumerWidget {
                     Text(
                       'সহযোগীতার নিয়মঃ',
                       style: TextStyle(
+                        fontFamily: 'bangla',
                         fontSize: fontSize.toDouble(),
                         color: Theme.of(context).colorScheme.onSurface,
                         fontWeight: FontWeight.bold,
@@ -92,6 +97,7 @@ class InfoScreen extends ConsumerWidget {
                     Text(
                       'বিকাশ/নগদ',
                       style: TextStyle(
+                        fontFamily: 'bangla',
                         fontSize: fontSize.toDouble(),
                         color: Theme.of(context).colorScheme.onSurface,
                         fontWeight: FontWeight.bold,
@@ -101,6 +107,7 @@ class InfoScreen extends ConsumerWidget {
                     Text(
                       'ফারদ্বীন: 01711379218',
                       style: TextStyle(
+                        fontFamily: 'bangla',
                         fontSize: fontSize.toDouble(),
                         color: Theme.of(context).colorScheme.onSurface,
                         fontWeight: FontWeight.bold,
@@ -110,6 +117,7 @@ class InfoScreen extends ConsumerWidget {
                     Text(
                       'মাজহারুল: 01797192725',
                       style: TextStyle(
+                        fontFamily: 'bangla',
                         fontSize: fontSize.toDouble(),
                         color: Theme.of(context).colorScheme.onSurface,
                         fontWeight: FontWeight.bold,
@@ -119,6 +127,7 @@ class InfoScreen extends ConsumerWidget {
                     Text(
                       'বি.দ্র. যাকাত, ফিতরার টাকা এখানে প্রদান করা যাবে না। তাহলে যাকাত আদায় হবে না। ',
                       style: TextStyle(
+                        fontFamily: 'bangla',
                         fontSize: fontSize.toDouble(),
                         color: Theme.of(context).colorScheme.error,
                         fontWeight: FontWeight.bold,
@@ -128,6 +137,7 @@ class InfoScreen extends ConsumerWidget {
                     Text(
                       'মহান আল্লাহ আপনাদের উত্তম জাযাহ দান করুক। বারাক আল্লাহু ফিকুম',
                       style: TextStyle(
+                        fontFamily: 'bangla',
                         fontSize: fontSize.toDouble(),
                         color: Theme.of(context).colorScheme.onSurface,
                       ),

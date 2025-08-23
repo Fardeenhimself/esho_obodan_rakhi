@@ -74,6 +74,7 @@ class SurahDetailPage extends ConsumerWidget {
                       v.meaning,
                       textAlign: TextAlign.left,
                       style: TextStyle(
+                        fontFamily: 'bangla',
                         fontSize: translationFontSize.toDouble(),
                         color: Theme.of(context).colorScheme.onSurface,
                         height: 1.3,

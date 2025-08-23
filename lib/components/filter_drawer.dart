@@ -20,15 +20,15 @@ class FilterDrawer extends ConsumerWidget {
           child: Column(
             children: [
               Text(
-                'F I L T E R S',
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                'ফিল্টার',
+                style: TextStyle(
+                  fontFamily: 'bangla',
+                  fontSize: 22,
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
               const Divider(indent: 25, endIndent: 25),
               const SizedBox(height: 12),
-
-              // 🔹 Language Switch
               Text(
                 'Translation',
                 style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -50,10 +50,11 @@ class FilterDrawer extends ConsumerWidget {
                       children: [
                         Text(
                           'বাংলা',
-                          style: Theme.of(context).textTheme.labelLarge!
-                              .copyWith(
-                                color: Theme.of(context).colorScheme.onSurface,
-                              ),
+                          style: TextStyle(
+                            fontFamily: 'bangla',
+                            fontSize: 18,
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
                         ),
                         CupertinoSwitch(
                           value: lang == TranslationLang.bn,
@@ -72,10 +73,11 @@ class FilterDrawer extends ConsumerWidget {
                       children: [
                         Text(
                           'English',
-                          style: Theme.of(context).textTheme.labelLarge!
-                              .copyWith(
-                                color: Theme.of(context).colorScheme.onSurface,
-                              ),
+                          style: TextStyle(
+                            fontFamily: 'bangla',
+                            fontSize: 18,
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
                         ),
                         CupertinoSwitch(
                           value: lang == TranslationLang.en,

@@ -15,7 +15,9 @@ class DonationSuccessScreen extends StatelessWidget {
             Text(
               "🎉 জাযাকাল্লাহু খাইর!",
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+              style: TextStyle(
+                fontFamily: 'bangla',
+                fontSize: 20,
                 color: Theme.of(context).colorScheme.tertiary,
                 fontWeight: FontWeight.bold,
               ),
@@ -23,7 +25,9 @@ class DonationSuccessScreen extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               ' আপনার অনুদান সম্পন্ন হয়েছে।',
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+              style: TextStyle(
+                fontFamily: 'bangla',
+                fontSize: 18,
                 color: Theme.of(context).colorScheme.tertiary,
                 fontWeight: FontWeight.w600,
               ),
@@ -37,7 +41,9 @@ class DonationSuccessScreen extends StatelessWidget {
               onPressed: () => Navigator.of(context).pop(),
               child: Text(
                 "ফিরে যান",
-                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                style: TextStyle(
+                  fontFamily: 'bangla',
+                  fontSize: 16,
                   color: Theme.of(context).colorScheme.onPrimaryContainer,
                   fontWeight: FontWeight.bold,
                 ),

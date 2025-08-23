@@ -43,6 +43,7 @@ class MyAuthTextField extends StatelessWidget {
           fillColor: Colors.green.shade50,
           filled: true,
           hintText: hintText,
+          hintStyle: TextStyle(fontFamily: 'bangla', fontSize: 16),
           prefixIcon: prefixIcon,
           prefixIconColor: Colors.green.shade900,
         ),

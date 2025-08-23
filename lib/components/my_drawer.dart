@@ -31,8 +31,10 @@ class MyDrawer extends StatelessWidget {
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
                 title: Text(
-                  'H O M E',
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  'হোম',
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 18,
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
@@ -50,8 +52,10 @@ class MyDrawer extends StatelessWidget {
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
                 title: Text(
-                  'S E T T I N G S',
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  'সেটিংস',
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 18,
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
@@ -72,13 +76,17 @@ class MyDrawer extends StatelessWidget {
             ),
             title: Text(
               'D O N A T E',
-              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+              style: TextStyle(
+                fontFamily: 'inter',
+                fontSize: 14,
                 color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
             subtitle: Text(
               'Help us keep the app add free',
-              style: Theme.of(context).textTheme.labelMedium!.copyWith(
+              style: TextStyle(
+                fontFamily: 'inter',
+                fontSize: 12,
                 color: Theme.of(context).colorScheme.onSurface,
               ),
             ),

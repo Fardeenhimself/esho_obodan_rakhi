@@ -15,7 +15,12 @@ class AlQuranScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
-      appBar: AppBar(title: Text('আল-কোরআন (${lang.label})')),
+      appBar: AppBar(
+        title: Text(
+          'আল-কোরআন (${lang.label})',
+          style: TextStyle(fontFamily: 'bangla', fontSize: 24),
+        ),
+      ),
       endDrawer: const FilterDrawer(),
       body: surahsAsync.when(
         data: (surahs) => ListView.separated(
@@ -34,14 +39,18 @@ class AlQuranScreen extends ConsumerWidget {
                 children: [
                   Text(
                     s.transliteration,
-                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                    style: TextStyle(
+                      fontFamily: 'bangla',
+                      fontSize: 16,
                       color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     s.translation,
-                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                    style: TextStyle(
+                      fontFamily: 'bangla',
+                      fontSize: 16,
                       color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
@@ -56,7 +65,9 @@ class AlQuranScreen extends ConsumerWidget {
               ),
               trailing: Text(
                 s.name,
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                style: TextStyle(
+                  fontFamily: 'arbi',
+                  fontSize: 26,
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),

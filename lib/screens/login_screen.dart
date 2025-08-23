@@ -61,6 +61,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             Text(
               'এসো অবদান রাখি!',
               style: TextStyle(
+                fontFamily: 'bangla',
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
@@ -90,7 +91,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('এ্যাকাউন্ট নেই?', style: TextStyle(color: Colors.white)),
+                Text(
+                  'এ্যাকাউন্ট নেই?',
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                ),
                 const SizedBox(width: 5),
                 GestureDetector(
                   onTap: widget.onTap,
@@ -99,6 +107,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
+                      fontFamily: 'bangla',
+                      fontSize: 16,
                     ),
                   ),
                 ),

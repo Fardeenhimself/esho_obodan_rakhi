@@ -46,7 +46,9 @@ class MosquesItems extends StatelessWidget {
                       textAlign: TextAlign.left,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      style: TextStyle(
+                        fontFamily: 'bangla',
+                        fontSize: 22,
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
                       ),
@@ -57,11 +59,12 @@ class MosquesItems extends StatelessWidget {
                       children: [
                         Text(
                           'রিভিউঃ ${mosque.rating}',
-                          style: Theme.of(context).textTheme.labelLarge!
-                              .copyWith(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w600,
-                              ),
+                          style: TextStyle(
+                            fontFamily: 'bangla',
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                         const SizedBox(width: 6),
                         Icon(mosque.starIcon, color: Colors.yellow, size: 20),

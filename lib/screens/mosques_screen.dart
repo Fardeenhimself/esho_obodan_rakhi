@@ -25,7 +25,12 @@ class MosquesScreen extends StatelessWidget {
       ),
     );
     return Scaffold(
-      appBar: AppBar(title: Text('খুলনার মসজিদ')),
+      appBar: AppBar(
+        title: Text(
+          'খুলনার মসজিদ',
+          style: TextStyle(fontFamily: 'bangla', fontSize: 24),
+        ),
+      ),
       body: mosques.isEmpty
           ? content
           : ListView.builder(

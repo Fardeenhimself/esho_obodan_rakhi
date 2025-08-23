@@ -13,7 +13,10 @@ class SingleHadithScreen extends ConsumerWidget {
     final fontSize = ref.watch(hadithFontSizeProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text(' হাদিস ব্যাখ্যা'),
+        title: const Text(
+          ' হাদিস ব্যাখ্যা',
+          style: TextStyle(fontFamily: 'bangla', fontSize: 24),
+        ),
         actions: [
           // decrease font
           IconButton(
@@ -44,7 +47,9 @@ class SingleHadithScreen extends ConsumerWidget {
               children: [
                 Text(
                   hadith.title,
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 22,
                     color: Theme.of(context).colorScheme.onSurface,
                     fontWeight: FontWeight.bold,
                   ),
@@ -53,6 +58,7 @@ class SingleHadithScreen extends ConsumerWidget {
                 Text(
                   hadith.hadeeth,
                   style: TextStyle(
+                    fontFamily: 'bangla',
                     fontSize: fontSize.toDouble(),
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
@@ -60,14 +66,18 @@ class SingleHadithScreen extends ConsumerWidget {
                 const SizedBox(height: 10),
                 Text(
                   'রেফারেন্সঃ ${hadith.attribution}',
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 16,
                     color: Theme.of(context).colorScheme.onSurface,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   'গ্রেডঃ ${hadith.grade}',
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 16,
                     color: Theme.of(context).colorScheme.onSurface,
                     fontWeight: FontWeight.bold,
                   ),
@@ -75,7 +85,9 @@ class SingleHadithScreen extends ConsumerWidget {
                 const SizedBox(height: 10),
                 Text(
                   'ব্যাখ্যাঃ',
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 18,
                     color: Theme.of(context).colorScheme.onSurface,
                     fontWeight: FontWeight.bold,
                   ),
@@ -83,6 +95,7 @@ class SingleHadithScreen extends ConsumerWidget {
                 Text(
                   hadith.explanation,
                   style: TextStyle(
+                    fontFamily: 'bangla',
                     fontSize: fontSize.toDouble(),
                     color: Theme.of(context).colorScheme.onSurface,
                   ),

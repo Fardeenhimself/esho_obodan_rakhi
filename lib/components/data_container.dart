@@ -27,7 +27,9 @@ class DataContainer extends StatelessWidget {
                 const SizedBox(height: 10),
                 Text(
                   '১৫+',
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 22,
                     color: Theme.of(context).colorScheme.tertiary,
                     fontWeight: FontWeight.bold,
                   ),
@@ -35,7 +37,9 @@ class DataContainer extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   'সক্রিয় দাতা',
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 18,
                     color: Theme.of(context).colorScheme.tertiary,
                     fontWeight: FontWeight.bold,
                   ),
@@ -53,7 +57,9 @@ class DataContainer extends StatelessWidget {
                 const SizedBox(height: 10),
                 Text(
                   '৬+',
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 22,
                     color: Theme.of(context).colorScheme.tertiary,
                     fontWeight: FontWeight.bold,
                   ),
@@ -61,7 +67,9 @@ class DataContainer extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   'অনুদান সম্পন্ন',
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 18,
                     color: Theme.of(context).colorScheme.tertiary,
                     fontWeight: FontWeight.bold,
                   ),
@@ -79,7 +87,9 @@ class DataContainer extends StatelessWidget {
                 const SizedBox(height: 10),
                 Text(
                   '১৬০০০+',
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 22,
                     color: Theme.of(context).colorScheme.tertiary,
                     fontWeight: FontWeight.bold,
                   ),
@@ -87,7 +97,9 @@ class DataContainer extends StatelessWidget {
                 const SizedBox(height: 8),
                 Text(
                   'তহবিল সংগ্রহ',
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 18,
                     color: Theme.of(context).colorScheme.tertiary,
                     fontWeight: FontWeight.bold,
                   ),
