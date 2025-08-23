@@ -9,6 +9,9 @@ final hadithRepositoryProvider = Provider<HadithRepository>((ref) {
   return HadithRepository();
 });
 
+// font size
+final hadithFontSizeProvider = StateProvider<int>((ref) => 14);
+
 // Categories
 final hadithCategoriesProvider = FutureProvider<List<HadithCategory>>((
   ref,

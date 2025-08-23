@@ -10,9 +10,32 @@ class SingleHadithScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final singleHadithAsync = ref.watch(singleHadithProvider(hadithId));
-
+    final fontSize = ref.watch(hadithFontSizeProvider);
     return Scaffold(
-      appBar: AppBar(title: const Text(' হাদিস ব্যাখ্যা')),
+      appBar: AppBar(
+        title: const Text(' হাদিস ব্যাখ্যা'),
+        actions: [
+          // decrease font
+          IconButton(
+            onPressed: () {
+              ref.read(hadithFontSizeProvider.notifier).state = (fontSize > 10)
+                  ? fontSize - 1
+                  : fontSize;
+            },
+            icon: Icon(Icons.text_decrease),
+          ),
+
+          // decrease font
+          IconButton(
+            onPressed: () {
+              ref.read(hadithFontSizeProvider.notifier).state = (fontSize < 50)
+                  ? fontSize + 1
+                  : fontSize;
+            },
+            icon: Icon(Icons.text_increase),
+          ),
+        ],
+      ),
       body: singleHadithAsync.when(
         data: (hadith) {
           return Padding(
@@ -29,7 +52,8 @@ class SingleHadithScreen extends ConsumerWidget {
                 const SizedBox(height: 10),
                 Text(
                   hadith.hadeeth,
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  style: TextStyle(
+                    fontSize: fontSize.toDouble(),
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
@@ -58,7 +82,8 @@ class SingleHadithScreen extends ConsumerWidget {
                 ),
                 Text(
                   hadith.explanation,
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  style: TextStyle(
+                    fontSize: fontSize.toDouble(),
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
