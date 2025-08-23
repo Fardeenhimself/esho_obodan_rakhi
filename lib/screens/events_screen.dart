@@ -34,26 +34,60 @@ class EventsScreen extends ConsumerWidget {
             itemCount: events.length,
             itemBuilder: (context, index) {
               final event = events[index];
-              return ListTile(
-                title: Text(
-                  event.title,
-                  style: TextStyle(
-                    fontFamily: 'bangla',
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+              return Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (ctx) => EventDetailScreen(eventId: event.id),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.primaryContainer.withAlpha(76),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.info),
+                              const SizedBox(width: 10),
+                              Text(
+                                event.title,
+                                style: TextStyle(
+                                  fontFamily: 'bangla',
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 10),
+                          Row(
+                            children: [
+                              Icon(Icons.calendar_month),
+                              const SizedBox(width: 10),
+                              Text(
+                                event.eventDate,
+                                style: TextStyle(
+                                  fontFamily: 'bangla',
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-                subtitle: Text(
-                  event.eventDate,
-                  style: TextStyle(fontFamily: 'bangla', fontSize: 16),
-                ),
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (ctx) => EventDetailScreen(eventId: event.id),
-                    ),
-                  );
-                },
               );
             },
           );

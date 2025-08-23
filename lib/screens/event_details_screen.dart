@@ -18,35 +18,69 @@ class EventDetailScreen extends ConsumerWidget {
         error: (err, stack) => Center(child: Text('Error: $err')),
         data: (event) => Padding(
           padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  event.title,
-                  style: TextStyle(
-                    fontFamily: 'bangla',
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+          child: ListView(
+            children: [
+              Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.secondaryContainer.withAlpha(76),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Text(
+                    event.title,
+                    style: TextStyle(
+                      fontFamily: 'bangla',
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 12),
-                Text(
-                  event.eventDate,
-                  style: TextStyle(fontFamily: 'inter', fontSize: 14),
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  event.description,
-                  style: TextStyle(fontFamily: 'bangla', fontSize: 16),
-                ),
-                const SizedBox(height: 16),
-                Text(
-                  'Location: ${event.location}',
-                  style: TextStyle(fontFamily: 'bangla', fontSize: 16),
-                ),
-              ],
-            ),
+              ),
+              const SizedBox(height: 16),
+              Column(
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(Icons.info),
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          event.description,
+                          style: TextStyle(fontFamily: 'bangla', fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on),
+                      const SizedBox(width: 10),
+                      Text(
+                        event.location,
+                        style: TextStyle(fontFamily: 'bangla', fontSize: 16),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    children: [
+                      Icon(Icons.calendar_month),
+                      const SizedBox(width: 10),
+                      Text(
+                        event.eventDate,
+                        style: TextStyle(fontFamily: 'bangla', fontSize: 14),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
