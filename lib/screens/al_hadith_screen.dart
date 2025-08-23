@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:islamic_app/providers/hadith_category_provider.dart';
-import 'package:islamic_app/screens/al_hadith_detail_screen.dart';
+import 'package:islamic_app/screens/al_hadith_subcategory_screen.dart';
 
 class AlHadithScreen extends ConsumerWidget {
   const AlHadithScreen({super.key});
@@ -30,7 +30,7 @@ class AlHadithScreen extends ConsumerWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (ctx) =>
-                            AlHadithDetailScreen(category: category),
+                            AlHadithSubcategoryScreen(category: category),
                       ),
                     );
                   },
