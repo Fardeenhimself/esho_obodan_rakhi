@@ -3,7 +3,6 @@ import 'package:islamic_app/models/dummy_models/mosques.dart';
 import 'package:islamic_app/screens/al_hadith_screen.dart';
 import 'package:islamic_app/screens/al_quran_screen.dart';
 import 'package:islamic_app/screens/ask_question_screen.dart';
-import 'package:islamic_app/screens/donation_screen.dart';
 import 'package:islamic_app/screens/events_screen.dart';
 import 'package:islamic_app/screens/fund_description_screen.dart';
 import 'package:islamic_app/screens/halaqa_screen.dart';

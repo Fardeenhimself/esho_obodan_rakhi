@@ -23,10 +23,10 @@ class LoginRepository {
       final res = LoginResponse.fromJson(json);
 
       // Save token and role
-      await SecureStorageService.write("user_id", res.user.id);
-      await SecureStorageService.write("auth_token", res.token);
-      await SecureStorageService.write("user_role", res.user.role);
-      await SecureStorageService.write("user_email", email);
+      await SecureStorageService.write('user_id', res.user.id);
+      await SecureStorageService.write('auth_token', res.token);
+      await SecureStorageService.write('user_role', res.user.role);
+      await SecureStorageService.write('user_email', email);
 
       return res;
     } else {

@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:islamic_app/components/my_auth_text_field.dart';
 import 'package:islamic_app/providers/login_provider.dart';
 import 'package:islamic_app/providers/profilerepository_provider.dart';
-
 import '../components/my_button.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {

@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:islamic_app/providers/donation_provider.dart';
 import 'package:islamic_app/providers/profilerepository_provider.dart';
 import 'package:islamic_app/services/auth/login_repository.dart';
 import 'package:islamic_app/services/auth/logout_repository.dart';
@@ -40,6 +41,9 @@ class LoginNotifier extends StateNotifier<LoginState> {
 
     // fetch profile for new user
     _ref.refresh(profileProvider);
+
+    // invalidate so new donation is fetched
+    _ref.invalidate(userDonationProvider);
   }
 
   Future<void> logout() async {
@@ -48,15 +52,17 @@ class LoginNotifier extends StateNotifier<LoginState> {
     // resets the login state
     state = LoginState(isLoggedIn: false);
 
-    // invalidate the provider so that user data is cleared...
+    // invalidate the provider and donation provider so that user data is cleared...
     _ref.invalidate(profileProvider);
+    _ref.invalidate(userDonationProvider);
   }
 
   Future<void> clearLocalToken() async {
     // Delete stored credentials
-    await SecureStorageService.delete("auth_token");
-    await SecureStorageService.delete("user_role");
-    await SecureStorageService.delete("user_email");
+    await SecureStorageService.delete('auth_token');
+    await SecureStorageService.delete('user_role');
+    await SecureStorageService.delete('user_email');
+    await SecureStorageService.delete('user_id');
 
     // Update login state
     state = LoginState(isLoggedIn: false);
