@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islamic_app/models/dummy_models/mosques.dart';
 import 'package:islamic_app/screens/al_hadith_screen.dart';
 import 'package:islamic_app/screens/al_quran_screen.dart';
-import 'package:islamic_app/screens/ask_question_screen.dart';
+import 'package:islamic_app/screens/faq_screen.dart';
 import 'package:islamic_app/screens/blood_bank_screen.dart';
 import 'package:islamic_app/screens/events_screen.dart';
 import 'package:islamic_app/screens/fund_description_screen.dart';
@@ -47,7 +47,7 @@ final List<Category> categories = [
     id: '4',
     title: 'জিজ্ঞাসা',
     icon: Icons.question_mark_rounded,
-    page: (ctx) => const AskQuestionScreen(),
+    page: (ctx) => const FaqScreen(),
   ),
   Category(
     id: '5',
