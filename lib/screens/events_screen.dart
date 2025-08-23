@@ -35,8 +35,18 @@ class EventsScreen extends ConsumerWidget {
             itemBuilder: (context, index) {
               final event = events[index];
               return ListTile(
-                title: Text(event.title),
-                subtitle: Text(event.eventDate),
+                title: Text(
+                  event.title,
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                subtitle: Text(
+                  event.eventDate,
+                  style: TextStyle(fontFamily: 'bangla', fontSize: 16),
+                ),
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(

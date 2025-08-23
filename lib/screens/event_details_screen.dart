@@ -24,25 +24,26 @@ class EventDetailScreen extends ConsumerWidget {
               children: [
                 Text(
                   event.title,
-                  style: const TextStyle(
-                    fontSize: 22,
+                  style: TextStyle(
+                    fontFamily: 'bangla',
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: 12),
                 Text(
                   event.eventDate,
-                  style: const TextStyle(fontSize: 16, color: Colors.grey),
+                  style: TextStyle(fontFamily: 'inter', fontSize: 14),
                 ),
                 const SizedBox(height: 16),
-                Text(event.description, style: const TextStyle(fontSize: 18)),
+                Text(
+                  event.description,
+                  style: TextStyle(fontFamily: 'bangla', fontSize: 16),
+                ),
                 const SizedBox(height: 16),
                 Text(
                   'Location: ${event.location}',
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontStyle: FontStyle.italic,
-                  ),
+                  style: TextStyle(fontFamily: 'bangla', fontSize: 16),
                 ),
               ],
             ),

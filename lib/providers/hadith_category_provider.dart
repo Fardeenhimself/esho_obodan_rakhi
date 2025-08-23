@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:islamic_app/models/core_models/hadith_category.dart';
 import 'package:islamic_app/models/core_models/hadith_subcategory.dart';
+import 'package:islamic_app/models/core_models/random_hadith.dart';
 import 'package:islamic_app/models/core_models/single_hadith.dart';
 import 'package:islamic_app/services/core/hadith_repository.dart';
 
@@ -37,4 +38,10 @@ final singleHadithProvider = FutureProvider.family<SingleHadith, String>((
 ) async {
   final repo = ref.read(hadithRepositoryProvider);
   return repo.fetchSingleHadith(id: id);
+});
+
+// random hadith
+final randomHadithProvider = FutureProvider<RandomHadith>((ref) async {
+  final repo = ref.watch(hadithRepositoryProvider);
+  return repo.fetchRandomHadith();
 });

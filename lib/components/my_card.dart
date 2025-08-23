@@ -1,48 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:islamic_app/providers/hadith_category_provider.dart';
 
-class MyCard extends StatelessWidget {
-  const MyCard({super.key, required this.message, required this.msgInfo});
-
-  final String message;
-  final String msgInfo;
+class MyCard extends ConsumerWidget {
+  const MyCard({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final hadithAsync = ref.watch(randomHadithProvider);
+
     return Card(
       elevation: 4,
       color: Theme.of(context).colorScheme.secondaryContainer,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadiusGeometry.circular(10),
-      ),
-      child: Container(
-        alignment: Alignment.center,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: hadithAsync.when(
+          data: (hadith) => Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                message,
+                hadith.description,
                 style: TextStyle(
                   fontFamily: 'bangla',
                   fontSize: 18,
-                  color: Theme.of(context).colorScheme.onSecondaryContainer,
                   fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.onSecondaryContainer,
                 ),
                 textAlign: TextAlign.center,
               ),
-
-              const SizedBox(height: 6),
-              Text(
-                msgInfo,
-                style: TextStyle(
-                  fontFamily: 'bangla',
-                  fontSize: 16,
-                  color: Theme.of(context).colorScheme.onSecondaryContainer,
-                ),
-              ),
             ],
           ),
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (err, stack) =>
+              Center(child: Text('আপনার ইন্টারনেট সেবা চালু করুন')),
         ),
       ),
     );

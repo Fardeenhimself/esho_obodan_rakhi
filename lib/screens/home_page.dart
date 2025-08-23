@@ -38,11 +38,7 @@ class HomePage extends StatelessWidget {
             // A card that will show at the home header
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 30),
-              child: MyCard(
-                message:
-                    'তোমাদের মধ্যে সেই উত্তম যে নিজে কোরআন শিখে এবং অন্যকে শিক্ষা দেয়',
-                msgInfo: '~সহীহ বুখারী',
-              ),
+              child: MyCard(),
             ),
             const SizedBox(height: 30),
             const Divider(indent: 100, endIndent: 100, thickness: 2),
