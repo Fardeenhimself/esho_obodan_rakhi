@@ -4,7 +4,7 @@ import 'package:islamic_app/models/auth_model/login_response.dart';
 import 'package:islamic_app/services/core/secure_storage_service.dart';
 
 class LoginRepository {
-  final String baseUrl = "https://halaqa.theabacuses.com/api";
+  final String baseUrl = "YOUR API KEY";
 
   Future<LoginResponse> login({
     required String email,
