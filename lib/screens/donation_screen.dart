@@ -44,11 +44,14 @@
 //   }
 // }
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:islamic_app/components/data_container.dart';
+import 'package:islamic_app/components/donation_campaign.dart';
 import 'package:islamic_app/components/my_drawer.dart';
+import 'package:islamic_app/providers/donation_category_provider.dart';
 import 'package:islamic_app/screens/donation_success_page.dart';
 import '../providers/donation_provider.dart';
 
@@ -57,6 +60,8 @@ class DonationScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final categoriesAsync = ref.watch(donationCategoryProvider);
+
     void _showDonationForm() {
       final _formKey = GlobalKey<FormState>();
       final _amountController = TextEditingController();
@@ -249,6 +254,35 @@ class DonationScreen extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 22),
             child: DataContainer(),
+          ),
+          const Divider(indent: 50, endIndent: 50),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Text(
+              'আমাদের কেম্পেইন',
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+            ),
+          ),
+
+          // campaigns
+          Expanded(
+            child: categoriesAsync.when(
+              data: (categories) {
+                if (categories.isEmpty) {
+                  return const Center(child: Text('No campaign availabel'));
+                }
+                return ListView.builder(
+                  itemCount: categories.length,
+                  itemBuilder: (ctx, index) {
+                    return DonationCampaign(category: categories[index]);
+                  },
+                );
+              },
+              loading: () => const Center(child: CupertinoActivityIndicator()),
+              error: (e, text) => Center(child: Text('Failed to fetch: $e')),
+            ),
           ),
         ],
       ),
