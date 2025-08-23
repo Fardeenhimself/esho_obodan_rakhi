@@ -8,7 +8,7 @@ class DonationCategoryRepository {
     final token = await SecureStorageService.read('auth_token');
 
     final response = await http.get(
-      Uri.parse('https://halaqa.theabacuses.com/api/donation/category'),
+      Uri.parse('YOUR API KEY'),
       headers: {'Authorization': 'Bearer $token'},
     );
 
