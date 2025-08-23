@@ -1,6 +1,8 @@
 # Islamic App – Flutter
 
-A modern mobile application built with **Flutter** for Android and iOS, designed to help users access Islamic resources including daily Hadiths, prayer events, Quranic content, and more. This app uses **Riverpod** for state management and communicates with a **REST API** backend for dynamic content.
+A modern Islamic Foundation mobile application built with **Flutter** for Android, designed to help users access Islamic resources including daily Hadiths, prayer events, Quranic content, and more. This app uses **Riverpod** for state management and communicates with a **REST API** backend for dynamic content. Users can edit their profile, make donation and
+keep track of their donation. Events, Donations campains will let the user know what he can do for the community. Read the quran, see the hadith and most importantly donate to the needy!
+A heartfull thanks to **Mazharul Islam** for helping developing the backend. Barak Allahu Feekum.
 
 ---
 
@@ -27,6 +29,7 @@ A modern mobile application built with **Flutter** for Android and iOS, designed
 - **Responsive design** for different screen sizes.
 - **Riverpod** state management for efficient and reactive UI updates.
 - Local secure storage for auth token using `flutter_secure_storage`.
+- **SQFLite** for Quran Cache.
 
 ---
 
@@ -93,6 +96,8 @@ flutter run
 2. **Home screen** displays a random Hadith. Refresh to get a new one.
 3. Navigate to **Events** to see a list of upcoming Islamic events. Tap an event to see full details.
 4. Explore **Quranic content** (if implemented) or other modules in the app.
+5. See islamic events or donation campain
+6. Donate to the needy and **Keep Track**
 
 ---
 
