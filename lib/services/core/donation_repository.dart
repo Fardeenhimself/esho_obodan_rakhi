@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:islamic_app/services/core/secure_storage_service.dart';
 
 class DonationRepository {
-  static const baseUrl = "https://halaqa.theabacuses.com/api";
+  static const baseUrl = "YOUR API KEY";
 
   // P O S T  D O N A T I O N
   Future<Map<String, dynamic>> makeDonation({
