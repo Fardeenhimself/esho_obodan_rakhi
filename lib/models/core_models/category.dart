@@ -3,6 +3,7 @@ import 'package:islamic_app/models/dummy_models/mosques.dart';
 import 'package:islamic_app/screens/al_hadith_screen.dart';
 import 'package:islamic_app/screens/al_quran_screen.dart';
 import 'package:islamic_app/screens/ask_question_screen.dart';
+import 'package:islamic_app/screens/blood_bank_screen.dart';
 import 'package:islamic_app/screens/events_screen.dart';
 import 'package:islamic_app/screens/fund_description_screen.dart';
 import 'package:islamic_app/screens/halaqa_screen.dart';
@@ -50,9 +51,9 @@ final List<Category> categories = [
   ),
   Category(
     id: '5',
-    title: 'অনুষ্ঠান',
-    icon: Icons.event,
-    page: (ctx) => EventsScreen(),
+    title: 'ব্লাড ব্যাঙ্ক',
+    icon: Icons.bloodtype,
+    page: (ctx) => BloodBankScreen(),
   ),
   Category(
     id: '6',
