@@ -34,7 +34,7 @@ class DonationNotifier extends StateNotifier<DonationState> {
 
   /// Reset the provider state to default
   void reset() {
-    state = DonationState(); // sets isLoading=false, error=null, success=false
+    state = DonationState();
   }
 }
 
