@@ -52,7 +52,7 @@ class HomePage extends StatelessWidget {
             GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                childAspectRatio: 3 / 2,
+                childAspectRatio: 3 / 3,
               ),
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
