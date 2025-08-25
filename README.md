@@ -97,7 +97,7 @@ flutter run
 1. **Register a new account** or **login** if you already have one.
 2. **Home screen** displays a random Hadith. Refresh to get a new one.
 3. Navigate to **Events** to see a list of upcoming Islamic events. Tap an event to see full details.
-4. Explore **Quranic content** (if implemented) or other modules in the app.
+4. Explore **Quranic content** or other modules in the app.
 5. See islamic events or donation campain
 6. Donate to the needy and **Keep Track**
 
@@ -134,17 +134,6 @@ lib/
 
 ---
 
-## Contributing
-
-Contributions are welcome!
-
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature-name`.
-3. Make your changes and commit: `git commit -m "Feature: description"`.
-4. Push to the branch: `git push origin feature-name`.
-5. Open a pull request.
-
----
 
 ## For Mor Info
 
