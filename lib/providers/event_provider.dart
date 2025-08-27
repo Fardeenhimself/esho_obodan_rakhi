@@ -17,3 +17,31 @@ final eventDetailProvider = FutureProvider.family<Event, int>((ref, id) async {
   final repo = ref.watch(eventRepositoryProvider);
   return repo.fetchEventById(id);
 });
+
+// add evnet if role == admin
+final addEventProvider = FutureProvider.family
+    .autoDispose<Event, Map<String, String>>((ref, payload) async {
+      final repo = ref.watch(eventRepositoryProvider);
+      return repo.addEvent(
+        title: payload['title']!,
+        description: payload['description']!,
+        location: payload['location']!,
+        eventDate: payload['event_date']!,
+      );
+    });
+
+// delete event for role == admin
+final deleteEventProvider = Provider((ref) => DeleteEvent(ref));
+
+class DeleteEvent {
+  final Ref ref;
+  DeleteEvent(this.ref);
+
+  Future<void> call(int eventId) async {
+    final repo = ref.read(eventRepositoryProvider);
+    await repo.deleteEvent(eventId);
+
+    ref.invalidate(eventsProvider);
+    ref.invalidate(eventDetailProvider(eventId));
+  }
+}

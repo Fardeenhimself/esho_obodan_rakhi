@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamic_app/components/date_time.dart';
 import 'package:islamic_app/components/my_card.dart';
 import 'package:islamic_app/components/my_categories.dart';
 import 'package:islamic_app/components/my_drawer.dart';
@@ -40,7 +41,6 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 30),
               child: MyCard(),
             ),
-            const SizedBox(height: 30),
             const Divider(indent: 100, endIndent: 100, thickness: 2),
             const SizedBox(height: 30),
 

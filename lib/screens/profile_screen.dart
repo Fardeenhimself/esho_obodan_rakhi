@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:islamic_app/components/my_dialog.dart';
+import 'package:islamic_app/components/my_drawer.dart';
 import 'package:islamic_app/models/auth_model/user_profile.dart';
 import 'package:islamic_app/providers/delete_provider.dart';
 import 'package:islamic_app/providers/login_provider.dart';
@@ -205,6 +206,7 @@ class ProfileScreen extends ConsumerWidget {
           ),
         ],
       ),
+      drawer: MyDrawer(),
       body: profileAsync.when(
         loading: () => Center(child: CupertinoActivityIndicator()),
         error: (err, _) => Center(child: Text("Error: $err")),

@@ -137,101 +137,101 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.green.shade900,
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Logo
-            Icon(Icons.mosque, size: 50, color: Colors.white),
-            const SizedBox(height: 12),
-            // Some Text
-            Text(
-              'এ্যাকাউন্ট তৈরি করুন',
-              style: TextStyle(
-                fontFamily: 'bangla',
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            const SizedBox(height: 20),
-            // Username
-            MyAuthTextField(
-              hintText: 'নাম',
-              obscureText: false,
-              prefixIcon: Icon(Icons.person),
-              controller: _nameController,
-              keyboardType: TextInputType.text,
-            ),
-            // Email
-            MyAuthTextField(
-              hintText: 'ইমেইল',
-              obscureText: false,
-              prefixIcon: Icon(Icons.email),
-              controller: _emailController,
-              keyboardType: TextInputType.text,
-            ),
-            //Phone
-            MyAuthTextField(
-              hintText: 'ফোন নাম্বর',
-              obscureText: false,
-              prefixIcon: Icon(Icons.smartphone),
-              controller: _phoneController,
-              keyboardType: TextInputType.number,
-            ),
-            // Password
-            MyAuthTextField(
-              hintText: 'পিন লিখুন',
-              obscureText: true,
-              prefixIcon: Icon(Icons.password_rounded),
-              controller: _passwordController,
-              keyboardType: TextInputType.number,
-            ),
-
-            // Confirm Password
-            MyAuthTextField(
-              hintText: 'পুনরায় পিন লিখুন',
-              obscureText: true,
-              prefixIcon: Icon(Icons.password_rounded),
-              controller: _confirmPWController,
-              keyboardType: TextInputType.number,
-            ),
-            // Login Button
-            isLoading
-                ? const CircularProgressIndicator(color: Colors.white)
-                : MyButton(text: 'রেজিস্টার', onTap: () => register(context)),
-            const SizedBox(height: 20),
-            // Register Now
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'এ্যাকাউন্ট আছে?',
-                  style: TextStyle(
-                    fontFamily: 'bangla',
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Logo
+              Icon(Icons.mosque, size: 50, color: Colors.white),
+              const SizedBox(height: 12),
+              // Some Text
+              Text(
+                'এ্যাকাউন্ট তৈরি করুন',
+                style: TextStyle(
+                  fontFamily: 'bangla',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
-                const SizedBox(width: 5),
-                GestureDetector(
-                  onTap: widget.onTap,
-                  child: Text(
-                    'লগইন করুন',
+              ),
+              const SizedBox(height: 20),
+              // Username
+              MyAuthTextField(
+                hintText: 'নাম',
+                obscureText: false,
+                prefixIcon: Icon(Icons.person),
+                controller: _nameController,
+                keyboardType: TextInputType.text,
+              ),
+              // Email
+              MyAuthTextField(
+                hintText: 'ইমেইল',
+                obscureText: false,
+                prefixIcon: Icon(Icons.email),
+                controller: _emailController,
+                keyboardType: TextInputType.text,
+              ),
+              //Phone
+              MyAuthTextField(
+                hintText: 'ফোন নাম্বর',
+                obscureText: false,
+                prefixIcon: Icon(Icons.smartphone),
+                controller: _phoneController,
+                keyboardType: TextInputType.number,
+              ),
+              // Password
+              MyAuthTextField(
+                hintText: 'পিন লিখুন',
+                obscureText: true,
+                prefixIcon: Icon(Icons.password_rounded),
+                controller: _passwordController,
+                keyboardType: TextInputType.number,
+              ),
+
+              // Confirm Password
+              MyAuthTextField(
+                hintText: 'পুনরায় পিন লিখুন',
+                obscureText: true,
+                prefixIcon: Icon(Icons.password_rounded),
+                controller: _confirmPWController,
+                keyboardType: TextInputType.number,
+              ),
+              // Login Button
+              isLoading
+                  ? const CircularProgressIndicator(color: Colors.white)
+                  : MyButton(text: 'রেজিস্টার', onTap: () => register(context)),
+              const SizedBox(height: 20),
+              // Register Now
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'এ্যাকাউন্ট আছে?',
                     style: TextStyle(
                       fontFamily: 'bangla',
                       fontSize: 16,
                       color: Colors.white,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 40),
-          ],
+                  const SizedBox(width: 5),
+                  GestureDetector(
+                    onTap: widget.onTap,
+                    child: Text(
+                      'লগইন করুন',
+                      style: TextStyle(
+                        fontFamily: 'bangla',
+                        fontSize: 16,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

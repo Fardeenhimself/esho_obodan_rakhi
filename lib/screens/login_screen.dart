@@ -40,9 +40,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         context,
       ).showSnackBar(SnackBar(content: Text("লগইন সফল!")));
     } catch (e) {
+      // final message = e.toString().replaceFirst("Exception: ", "");
+      debugPrint('error: $e');
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text("লগইন ব্যর্থ: $e")));
+      ).showSnackBar(SnackBar(content: Text("লগইন ব্যর্থ")));
     }
   }
 

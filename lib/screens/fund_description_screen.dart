@@ -12,7 +12,11 @@ class FundDescriptionScreen extends ConsumerWidget {
       appBar: AppBar(
         title: Text(
           'এসো অবদান রাখি',
-          style: TextStyle(fontFamily: 'bangla', fontSize: 24),
+          style: TextStyle(
+            fontFamily: 'bangla',
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         actions: [
           // decrease font
@@ -60,7 +64,7 @@ class FundDescriptionScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: 20),
                     Text(
-                      'আমাদের ইসলামিক ফান্ড একটি মানবিক ও সমাজসেবামূলক উদ্যোগ, যার মূল লক্ষ্য হলো বিপদগ্রস্ত, অসহায় এবং সুবিধাবঞ্চিত মানুষদের পাশে দাঁড়ানো—ধর্ম, জাতি বা পরিচয় নির্বিশেষে। আমরা বিশ্বাস করি, মানবতা সব ধর্মের ঊর্ধ্বে, এবং সাহায্য পাওয়ার অধিকার সবার আছে।',
+                      'আমাদের ইসলামিক ফান্ড একটি মানবিক ও সমাজসেবামূলক উদ্যোগ, যার মূল লক্ষ্য হলো বিপদগ্রস্ত, অসহায় এবং সুবিধাবঞ্চিত মানুষদের পাশে দাঁড়ানো—ধর্ম, জাতি বা পরিচয় নির্বিশেষে। আমরা বিশ্বাস করি, রিজিক এবং সাহায্য শুধুমাত্র মহান আল্লাহ তা\'আলার তরফ থেকে, এবং সাহায্য পাওয়ার অধিকার সবার আছে।',
                       style: TextStyle(
                         fontFamily: 'bangla',
                         fontSize: fontSize.toDouble(),
@@ -80,7 +84,7 @@ class FundDescriptionScreen extends ConsumerWidget {
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        Icon(Icons.bloodtype_sharp),
+                        Icon(Icons.bloodtype_sharp, color: Colors.red),
                         const SizedBox(width: 5),
                         Expanded(
                           child: Text(
@@ -99,7 +103,7 @@ class FundDescriptionScreen extends ConsumerWidget {
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        Icon(Icons.dining_rounded),
+                        Icon(Icons.dining_rounded, color: Colors.yellow),
                         const SizedBox(width: 5),
                         Expanded(
                           child: Text(
@@ -118,7 +122,7 @@ class FundDescriptionScreen extends ConsumerWidget {
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        Icon(Icons.monetization_on),
+                        Icon(Icons.monetization_on, color: Colors.green),
                         const SizedBox(width: 5),
                         Expanded(
                           child: Text(

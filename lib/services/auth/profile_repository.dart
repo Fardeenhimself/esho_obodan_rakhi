@@ -4,7 +4,7 @@ import 'package:islamic_app/models/auth_model/user_profile.dart';
 import 'package:islamic_app/services/core/secure_storage_service.dart';
 
 class ProfileRepository {
-  final String baseUrl = "YOUR API";
+  final String baseUrl = "https://halaqa.theabacuses.com/api";
 
   // Fetch profile
   Future<UserProfile> fetchProfile() async {

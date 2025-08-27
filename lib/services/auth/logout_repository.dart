@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'package:islamic_app/services/core/secure_storage_service.dart';
 
 class LogoutRepository {
-  final String baseUrl = 'YOUR API KEY';
+  final String baseUrl = 'https://halaqa.theabacuses.com/api';
 
   Future<void> logOut() async {
     final token = await SecureStorageService.read('auth_token');

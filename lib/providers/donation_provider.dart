@@ -21,14 +21,19 @@ class DonationNotifier extends StateNotifier<DonationState> {
   final DonationRepository _repo;
   DonationNotifier(this._repo) : super(DonationState());
 
-  Future<void> donate({required double amount, String? reason}) async {
+  /// Send donation to backend
+  Future<void> donate({required String catId, required double amount}) async {
     state = state.copyWith(isLoading: true, error: null, success: false);
 
     try {
-      await _repo.makeDonation(amount: amount, reason: reason);
+      await _repo.makeDonation(catId: catId, amount: amount);
       state = state.copyWith(isLoading: false, success: true);
     } catch (e) {
-      state = state.copyWith(isLoading: false, error: e.toString());
+      state = state.copyWith(
+        isLoading: false,
+        error: e.toString(),
+        success: false,
+      );
     }
   }
 
@@ -39,15 +44,25 @@ class DonationNotifier extends StateNotifier<DonationState> {
 }
 
 final donationRepositoryProvider = Provider((ref) => DonationRepository());
+
 final donationProvider = StateNotifierProvider<DonationNotifier, DonationState>(
   (ref) {
-    return DonationNotifier((ref.read(donationRepositoryProvider)));
+    return DonationNotifier(ref.read(donationRepositoryProvider));
   },
 );
 
+// User donations provider
 final userDonationProvider = FutureProvider<List<Map<String, dynamic>>>((
   ref,
 ) async {
   final repo = ref.read(donationRepositoryProvider);
   return repo.getUserDonation();
+});
+
+// all donations for admin
+final allDonationsProvider = FutureProvider<List<Map<String, dynamic>>>((
+  ref,
+) async {
+  final repo = ref.read(donationRepositoryProvider);
+  return repo.getAllDonations();
 });

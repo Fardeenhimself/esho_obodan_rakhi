@@ -3,13 +3,14 @@ class UserProfile {
   final String name;
   final String email;
   final String phone;
-  //final String role;
+  final String role;
 
   UserProfile({
     required this.id,
     required this.name,
     required this.email,
     required this.phone,
+    required this.role,
   });
 
   // Diserialization
@@ -17,6 +18,7 @@ class UserProfile {
     return UserProfile(
       id: json['user']['id'],
       name: json['user']['name'] ?? 'Unknown',
+      role: json['user']['role'] ?? 'Unkown',
       email: json['user']['email'] ?? 'Unknown',
       phone: json['user']['phone'] ?? 'Unknown',
     );

@@ -25,10 +25,10 @@ class LoginNotifier extends StateNotifier<LoginState> {
 
   LoginNotifier(this._repo, this._logoutRepo, this._ref)
     : super(LoginState(isLoggedIn: false)) {
-    _loadAuth();
+    loadAuth();
   }
 
-  Future<void> _loadAuth() async {
+  Future<void> loadAuth() async {
     final token = await _repo.getToken();
     final role = await _repo.getRole();
     state = LoginState(isLoggedIn: token != null, role: role);

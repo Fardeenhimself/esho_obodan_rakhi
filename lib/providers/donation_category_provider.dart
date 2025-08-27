@@ -12,3 +12,13 @@ final donationCategoryProvider = FutureProvider<List<DonationCategory>>((
   final repo = ref.read(donationCategoryRepositoryProvider);
   return repo.fetchCategories();
 });
+
+// for admin
+final addCategoryTargetProvider =
+    FutureProvider.family<bool, Map<String, dynamic>>((ref, payload) async {
+      final repo = ref.read(donationCategoryRepositoryProvider);
+      return repo.addCategoryTarget(
+        name: payload['name'],
+        target: payload['target'] as String,
+      );
+    });

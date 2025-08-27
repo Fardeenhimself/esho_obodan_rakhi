@@ -4,7 +4,7 @@ import 'package:islamic_app/models/auth_model/login_response.dart';
 import 'package:islamic_app/services/core/secure_storage_service.dart';
 
 class LoginRepository {
-  final String baseUrl = "YOUR API KEY";
+  final String baseUrl = "https://halaqa.theabacuses.com/api";
 
   Future<LoginResponse> login({
     required String email,
@@ -18,9 +18,9 @@ class LoginRepository {
       body: jsonEncode({"email": email, "pin": pin}),
     );
 
+    final body = jsonDecode(response.body);
     if (response.statusCode == 200) {
-      final json = jsonDecode(response.body);
-      final res = LoginResponse.fromJson(json);
+      final res = LoginResponse.fromJson(body);
 
       // Save token and role
       await SecureStorageService.write('user_id', res.user.id);
@@ -30,7 +30,8 @@ class LoginRepository {
 
       return res;
     } else {
-      throw Exception("Failed to login: ${response.body}");
+      final errorMessage = body['message'] ?? body['error'] ?? 'Login failed';
+      throw Exception(errorMessage);
     }
   }
 

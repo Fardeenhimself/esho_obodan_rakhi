@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:islamic_app/providers/event_provider.dart';
+import 'package:islamic_app/providers/login_provider.dart';
 
 class EventDetailScreen extends ConsumerWidget {
   final int eventId;
@@ -10,9 +11,71 @@ class EventDetailScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final eventAsync = ref.watch(eventDetailProvider(eventId));
+    final user = ref.watch(loginProvider);
+
+    // delete function
+    void _showDeleteEventDialog(
+      BuildContext context,
+      WidgetRef ref,
+      int eventId,
+    ) async {
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: Text('অনুষ্ঠান ডিলিট করবেন?'),
+          content: Text('আপনি কি অনুষ্ঠানটি সম্পূর্ণ ডিলিট করতে চান?'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text('না'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                try {
+                  await ref.read(eventRepositoryProvider).deleteEvent(eventId);
+
+                  ref.invalidate(eventsProvider);
+
+                  ScaffoldMessenger.of(context).clearSnackBars();
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text('ডিলিট হয়েছে')));
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                } catch (e) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text('$e')));
+                  Navigator.of(context).pop();
+                }
+              },
+              child: Text('হ্যাঁ'),
+            ),
+          ],
+        ),
+      );
+    }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Event Details')),
+      appBar: AppBar(
+        title: const Text(
+          'অনুষ্ঠান বর্ণনা',
+          style: TextStyle(
+            fontFamily: 'bangla',
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        actions: user.role == "admin"
+            ? [
+                IconButton(
+                  onPressed: () =>
+                      _showDeleteEventDialog(context, ref, eventId),
+                  icon: Icon(Icons.delete_forever, size: 30),
+                ),
+              ]
+            : null,
+      ),
       body: eventAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (err, stack) => Center(child: Text('Error: $err')),

@@ -3,12 +3,12 @@ import 'package:http/http.dart' as http;
 import 'package:islamic_app/services/core/secure_storage_service.dart';
 
 class DonationRepository {
-  static const baseUrl = "YOUR API KEY";
+  static const baseUrl = "https://halaqa.theabacuses.com/api";
 
   // P O S T  D O N A T I O N
   Future<Map<String, dynamic>> makeDonation({
+    required String catId,
     required double amount,
-    String? reason,
   }) async {
     final token = await SecureStorageService.read("auth_token");
     final userId = await SecureStorageService.read("user_id");
@@ -20,8 +20,8 @@ class DonationRepository {
     // what we want to send via form
     final payload = {
       "user_id": userId,
+      "donation_category_id": catId,
       "amount": amount,
-      "reason": reason ?? '',
     };
 
     // hit the API
@@ -34,10 +34,11 @@ class DonationRepository {
       body: jsonEncode(payload),
     );
 
-    if (response.statusCode == 200) {
-      return jsonDecode(response.body);
+    final data = jsonDecode(response.body);
+    if (response.statusCode == 200 && data['message'] == null) {
+      return data;
     } else {
-      throw Exception('Donation failed: ${response.body}');
+      throw Exception(data['message'] ?? 'Donation failed');
     }
   }
 
@@ -58,13 +59,39 @@ class DonationRepository {
       },
     );
 
-    print("response Body: ${response.body}");
+    // print("response Body: ${response.body}");
 
     if (response.statusCode == 200) {
       final List<dynamic> data = jsonDecode(response.body);
       return data.map((e) => e as Map<String, dynamic>).toList();
     } else {
       throw Exception("Failed to fetch donation: ${response.body}");
+    }
+  }
+
+  // ALL USER DONATION if role == admin
+  Future<List<Map<String, dynamic>>> getAllDonations() async {
+    final token = await SecureStorageService.read("auth_token");
+
+    if (token == null) {
+      throw Exception("Please login first");
+    }
+
+    final response = await http.get(
+      Uri.parse("$baseUrl/donation/all"),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    print("All Donations Response: ${response.body}");
+
+    if (response.statusCode == 200) {
+      final List<dynamic> data = jsonDecode(response.body);
+      return data.map((e) => e as Map<String, dynamic>).toList();
+    } else {
+      throw Exception("Failed to fetch all donations: ${response.body}");
     }
   }
 }

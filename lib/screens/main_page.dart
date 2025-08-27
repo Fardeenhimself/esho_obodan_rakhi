@@ -58,7 +58,7 @@ class _MainPageState extends State<MainPage> {
           ),
           NavigationDestination(
             icon: Icon(
-              Icons.favorite,
+              Icons.volunteer_activism,
               color: Theme.of(context).colorScheme.tertiary,
               size: 30,
             ),

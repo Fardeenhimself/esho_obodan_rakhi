@@ -7,7 +7,7 @@ class Faq {
 
   factory Faq.fromJson(Map<String, dynamic> json) {
     return Faq(
-      id: json['id'] ?? 0,
+      id: (json['id'] ?? 0).toString(),
       question: json['question'] ?? '',
       answer: json['answer'] ?? '',
     );

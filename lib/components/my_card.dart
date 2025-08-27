@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:islamic_app/components/date_time.dart';
 import 'package:islamic_app/providers/hadith_category_provider.dart';
 
 class MyCard extends ConsumerWidget {
@@ -14,7 +15,7 @@ class MyCard extends ConsumerWidget {
       color: Theme.of(context).colorScheme.secondaryContainer,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 5),
         child: hadithAsync.when(
           data: (hadith) => Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,6 +30,7 @@ class MyCard extends ConsumerWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
+              DateTimeScreen(),
             ],
           ),
           loading: () => const Center(child: CircularProgressIndicator()),

@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:islamic_app/models/auth_model/signup_response.dart';
 
 class SignupRepository {
-  final String baseUrl = "YOUR API KEY";
+  final String baseUrl = "https://halaqa.theabacuses.com/api";
 
   Future<SignupResponse> signup({
     required String name,

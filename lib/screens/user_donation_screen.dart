@@ -41,7 +41,7 @@ class UserDonationScreen extends ConsumerWidget {
                   ),
                 ),
                 subtitle: Text(
-                  "কারনঃ ${donation['reason']}",
+                  "ক্যাম্পেইনঃ ${donation['category_name']}",
                   style: TextStyle(
                     fontFamily: 'inter',
                     fontSize: 14,

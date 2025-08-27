@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:islamic_app/models/core_models/hadith_category.dart';
 import 'package:islamic_app/models/core_models/hadith_subcategory.dart';
@@ -8,7 +7,7 @@ import 'package:islamic_app/models/core_models/single_hadith.dart';
 import 'package:islamic_app/services/core/secure_storage_service.dart';
 
 class HadithRepository {
-  final String baseUrl = 'YOUR API KEY';
+  final String baseUrl = 'https://hadeethenc.com/api/v1';
 
   // Lsit of C A T E G O R I E S
   Future<List<HadithCategory>> fetchCategories() async {
@@ -65,7 +64,7 @@ class HadithRepository {
     if (token == null) throw Exception('No token found. Please login.');
 
     final response = await http.get(
-      Uri.parse('YOUR API KEY/single'),
+      Uri.parse('https://halaqa.theabacuses.com/api/hadith/single'),
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
