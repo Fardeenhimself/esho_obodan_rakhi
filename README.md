@@ -35,16 +35,18 @@ A heartfull thanks to **Mazharul Islam** for helping developing the backend. Bar
 
 ## Screenshots
 
-![Log In](assets/ss/login.png)
-![Register](assets/ss/register.png)
-![Home Screen](assets/ss/home.png)
-![Al Quran](assets/ss/quran.png)
-![Al Quran Filter](assets/ss/quranSetting.png)
-![Al Hadith](assets/ss/hadith.png)
-![Donation](assets/ss/donation.png)
-![Track Donation](assets/ss/userdonation.png)
-![Profile Screen](assets/ss/profilecng.png)
-![Theme toggle](assets/ss/darrk.png)
+<p float="left">
+  <img src="assets/ss/login.png" width="45%" /> 
+  <img src="assets/ss/register.png" width="45%" /> 
+  <img src="assets/ss/home.png" width="45%" />
+  <img src="assets/ss/quran.png" width="45%" /> 
+  <img src="assets/ss/loginSetting.png" width="45%" /> 
+  <img src="assets/ss/hadith.png" width="45%" /> 
+  <img src="assets/ss/donation.png" width="45%" /> 
+  <img src="assets/ss/userdonation.png" width="45%" /> 
+  <img src="assets/ss/profilecng.png" width="45%" /> 
+  <img src="assets/ss/darrk.png" width="45%" /> 
+</p>
 
 ---
 
@@ -95,7 +97,7 @@ flutter run
 1. **Register a new account** or **login** if you already have one.
 2. **Home screen** displays a random Hadith. Refresh to get a new one.
 3. Navigate to **Events** to see a list of upcoming Islamic events. Tap an event to see full details.
-4. Explore **Quranic content** (if implemented) or other modules in the app.
+4. Explore **Quranic content** or other modules in the app.
 5. See islamic events or donation campain
 6. Donate to the needy and **Keep Track**
 
@@ -132,17 +134,6 @@ lib/
 
 ---
 
-## Contributing
-
-Contributions are welcome!
-
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature-name`.
-3. Make your changes and commit: `git commit -m "Feature: description"`.
-4. Push to the branch: `git push origin feature-name`.
-5. Open a pull request.
-
----
 
 ## For Mor Info
 
