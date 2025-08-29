@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:islamic_app/models/core_models/surah_detail.dart';
 
 class QuranApiService {
-  static const String _base = 'https://alquran-api.pages.dev/api/quran';
+  static const String _base = 'YOUR API KEY';
 
   final http.Client _client;
 
