@@ -43,7 +43,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       debugPrint('error: $e');
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text("লগইন ব্যর্থ: $e")));
+      ).showSnackBar(SnackBar(content: Text("লগইন ব্যর্থ: Try again later")));
     }
   }
 
