@@ -4,7 +4,7 @@ import 'package:islamic_app/models/core_models/faq.dart';
 import 'package:islamic_app/services/core/secure_storage_service.dart';
 
 class FaqRepository {
-  static const baseUrl = 'https://halaqa.theabacuses.com/api/faq';
+  static const baseUrl = 'YOUR API KEY';
 
   // get all faqs
   Future<List<Faq>> fetchFaqs() async {
