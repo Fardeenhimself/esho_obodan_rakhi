@@ -9,6 +9,7 @@ class AllUserScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userAsync = ref.watch(allUsersProvider);
+    final actionState = ref.watch(userActionProvider);
 
     // ban user function
     void banUser(
@@ -131,6 +132,7 @@ class AllUserScreen extends ConsumerWidget {
                   await ref
                       .read(userActionProvider.notifier)
                       .updateRole(userId, role);
+
                   ref.invalidate(allUsersProvider);
                   ScaffoldMessenger.of(
                     context,

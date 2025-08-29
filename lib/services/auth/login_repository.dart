@@ -22,15 +22,25 @@ class LoginRepository {
     if (response.statusCode == 200) {
       final res = LoginResponse.fromJson(body);
 
+      // Check if banned
+      // if (res.user.isBanned.toString() == '1') {
+      //   throw Exception("You cannot log in, your account is banned");
+      // }
+
       // Save token and role
       await SecureStorageService.write('user_id', res.user.id);
       await SecureStorageService.write('auth_token', res.token);
       await SecureStorageService.write('user_role', res.user.role);
       await SecureStorageService.write('user_email', email);
-
+      // print('id: ${res.user.id}');
+      // print('role: ${res.user.role}');
+      // print('status: ${res.user.isBanned}');
+      // print('message: ${res.message}');
+      // print('body: $body');
       return res;
     } else {
       final errorMessage = body['message'] ?? body['error'] ?? 'Login failed';
+      print(errorMessage);
       throw Exception(errorMessage);
     }
   }

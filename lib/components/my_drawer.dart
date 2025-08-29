@@ -32,7 +32,7 @@ class MyDrawer extends ConsumerWidget {
                         color: Theme.of(context).colorScheme.primary,
                       ),
                       Text(
-                        'এসো অবদান রাখি',
+                        'দাওয়াহ',
                         style: TextStyle(
                           fontFamily: 'bangla',
                           fontSize: 20,

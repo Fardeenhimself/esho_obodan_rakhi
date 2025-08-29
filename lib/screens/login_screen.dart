@@ -40,11 +40,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         context,
       ).showSnackBar(SnackBar(content: Text("লগইন সফল!")));
     } catch (e) {
-      // final message = e.toString().replaceFirst("Exception: ", "");
       debugPrint('error: $e');
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text("লগইন ব্যর্থ")));
+      ).showSnackBar(SnackBar(content: Text("লগইন ব্যর্থ: $e")));
     }
   }
 
@@ -61,7 +60,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             const SizedBox(height: 12),
             // Some Text
             Text(
-              'এসো অবদান রাখি!',
+              'দাওয়াহ',
               style: TextStyle(
                 fontFamily: 'bangla',
                 fontSize: 20,

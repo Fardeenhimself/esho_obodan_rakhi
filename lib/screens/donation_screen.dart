@@ -237,8 +237,9 @@ class DonationScreen extends ConsumerWidget {
                                         ),
                                         onPressed: () async {
                                           if (!_formKey.currentState!
-                                              .validate())
+                                              .validate()) {
                                             return;
+                                          }
 
                                           final amount = double.parse(
                                             _amountController.text,

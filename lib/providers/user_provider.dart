@@ -30,7 +30,8 @@ class UserActionState {
 
 class UserActionNotifier extends StateNotifier<UserActionState> {
   final UserRepository _repo;
-  UserActionNotifier(this._repo) : super(UserActionState());
+  final Ref _ref;
+  UserActionNotifier(this._repo, this._ref) : super(UserActionState());
 
   // ban user
   Future<void> banUser(String userId, bool isBanned) async {
@@ -46,11 +47,15 @@ class UserActionNotifier extends StateNotifier<UserActionState> {
 
   // make admin
   Future<void> updateRole(String userId, String role) async {
+    // Determine new role (first we did this inside our repo, now we do here)
+    final newRole = role == 'user' ? 'admin' : 'user';
     state = state.copyWith(isLoading: true, error: null, success: false);
 
     try {
-      await _repo.updateUserRole(userId, role);
+      await _repo.updateUserRole(userId, newRole);
       state = state.copyWith(isLoading: false, success: true);
+      // Refresh all users after action
+      _ref.invalidate(allUsersProvider);
     } catch (e) {
       state = state.copyWith(isLoading: false, error: e.toString());
     }
@@ -63,5 +68,5 @@ class UserActionNotifier extends StateNotifier<UserActionState> {
 
 final userActionProvider =
     StateNotifierProvider<UserActionNotifier, UserActionState>(
-      (ref) => UserActionNotifier(ref.read(userRepositoryProvider)),
+      (ref) => UserActionNotifier(ref.read(userRepositoryProvider), ref),
     );

@@ -51,11 +51,11 @@ class UserRepository {
   }
 
   // Make admin
-  Future<void> updateUserRole(String userId, String role) async {
+  Future<void> updateUserRole(String userId, String newRole) async {
     final token = await SecureStorageService.read('auth_token');
     if (token == null) throw Exception('No token found');
 
-    final payload = jsonEncode({'role': role == "admin" ? "user" : "admin"});
+    final payload = jsonEncode({'role': newRole});
 
     final response = await http.put(
       Uri.parse('$baseUrl/$userId/role'),
@@ -70,6 +70,22 @@ class UserRepository {
       throw Exception(
         'Failed to update role: ${response.statusCode} with ${response.body}',
       );
+    }
+  }
+
+  Future<AllUser> fetchCurrentUser(String userId) async {
+    final token = await SecureStorageService.read('auth_token');
+    if (token == null) throw Exception('No token found');
+
+    final response = await http.get(
+      Uri.parse('$baseUrl/$userId'),
+      headers: {'Accept': 'application/json', 'Authorization': 'Bearer $token'},
+    );
+
+    if (response.statusCode == 200) {
+      return AllUser.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Failed to fetch user: ${response.body}');
     }
   }
 }

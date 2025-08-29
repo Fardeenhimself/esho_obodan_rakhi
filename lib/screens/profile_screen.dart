@@ -209,7 +209,7 @@ class ProfileScreen extends ConsumerWidget {
       drawer: MyDrawer(),
       body: profileAsync.when(
         loading: () => Center(child: CupertinoActivityIndicator()),
-        error: (err, _) => Center(child: Text("Error: $err")),
+        error: (err, _) => Center(child: Text("Oops! Something went wrong. Check your connection or try again later")),
         data: (profile) => SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

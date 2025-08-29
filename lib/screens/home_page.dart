@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'এসো অবদান রাখি',
+          'দাওয়াহ',
           style: TextStyle(
             fontFamily: 'bangla',
             fontSize: 24,

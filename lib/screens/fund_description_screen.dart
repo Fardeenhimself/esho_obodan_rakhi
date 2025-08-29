@@ -11,7 +11,7 @@ class FundDescriptionScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'এসো অবদান রাখি',
+          'দাওয়াহ',
           style: TextStyle(
             fontFamily: 'bangla',
             fontSize: 24,
@@ -213,7 +213,7 @@ class FundDescriptionScreen extends ConsumerWidget {
                           ListTile(
                             leading: Icon(Icons.account_circle),
                             title: Text(
-                              'রহমত ভাই',
+                              'ফান্ড এ্যাডমিন',
                               style: TextStyle(
                                 fontFamily: 'bangla',
                                 fontSize: 18,
@@ -224,7 +224,7 @@ class FundDescriptionScreen extends ConsumerWidget {
                           ListTile(
                             leading: Icon(Icons.account_circle),
                             title: Text(
-                              'আরিফ ভাই',
+                              'ফান্ড মেম্বার',
                               style: TextStyle(
                                 fontFamily: 'bangla',
                                 fontSize: 18,
@@ -235,7 +235,7 @@ class FundDescriptionScreen extends ConsumerWidget {
                           ListTile(
                             leading: Icon(Icons.account_circle),
                             title: Text(
-                              'তামজিদ ভাই',
+                              'শেখ ফারদ্বীন বিন জামান',
                               style: TextStyle(
                                 fontFamily: 'bangla',
                                 fontSize: 18,
@@ -246,7 +246,7 @@ class FundDescriptionScreen extends ConsumerWidget {
                           ListTile(
                             leading: Icon(Icons.account_circle),
                             title: Text(
-                              'ফারদ্বীন ভাই',
+                              'মোঃ মাজহারুল ইসলাম',
                               style: TextStyle(
                                 fontFamily: 'bangla',
                                 fontSize: 18,
@@ -257,7 +257,7 @@ class FundDescriptionScreen extends ConsumerWidget {
                           ListTile(
                             leading: Icon(Icons.account_circle),
                             title: Text(
-                              'মাজহারুল ভাই',
+                              'ফান্ড মেম্বার',
                               style: TextStyle(
                                 fontFamily: 'bangla',
                                 fontSize: 18,
@@ -268,7 +268,7 @@ class FundDescriptionScreen extends ConsumerWidget {
                           ListTile(
                             leading: Icon(Icons.account_circle),
                             title: Text(
-                              'ইফতি ভাই',
+                              'ফান্ড মেম্বার',
                               style: TextStyle(
                                 fontFamily: 'bangla',
                                 fontSize: 18,

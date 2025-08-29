@@ -41,7 +41,7 @@ class DonationLedgerScreen extends ConsumerWidget {
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (err, stack) => Center(child: Text("Error: $err")),
+        error: (err, stack) => Center(child: Text("Oops! Something went wrong. Check your connection or try again later.")),
       ),
     );
   }
