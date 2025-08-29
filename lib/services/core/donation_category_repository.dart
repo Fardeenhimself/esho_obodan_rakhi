@@ -4,7 +4,7 @@ import 'package:islamic_app/services/core/secure_storage_service.dart';
 import 'package:islamic_app/models/core_models/donation_category.dart';
 
 class DonationCategoryRepository {
-  static const baseUrl = 'https://halaqa.theabacuses.com/api/donation/category';
+  static const baseUrl = 'YOUR API KEY';
 
   // All Categories
   Future<List<DonationCategory>> fetchCategories() async {
