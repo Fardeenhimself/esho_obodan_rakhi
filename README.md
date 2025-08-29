@@ -26,6 +26,9 @@ A heartfull thanks to **Mazharul Islam** for helping developing the backend. Bar
 - Display **daily Hadiths** with auto-fetch from API.
 - View **Islamic events** with details including title, date, location, and description.
 - Quran content (Surahs and details) with multi-language support.
+- Admin can see list of all users (can ban and promote/demote their role).
+- Admin can see the full donation history.
+- Admin can add/delete events, FAQ's, new donation campaigns. 
 - **Responsive design** for different screen sizes.
 - **Riverpod** state management for efficient and reactive UI updates.
 - Local secure storage for auth token using `flutter_secure_storage`.
