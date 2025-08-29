@@ -5,7 +5,7 @@ import 'package:islamic_app/models/auth_model/all_user.dart';
 import 'package:islamic_app/services/core/secure_storage_service.dart';
 
 class UserRepository {
-  static const baseUrl = 'https://halaqa.theabacuses.com/api/user';
+  static const baseUrl = 'YOUR API KEY';
 
   // get all users
   Future<List<AllUser>> fetchAllUsers() async {
